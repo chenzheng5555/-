@@ -39,6 +39,7 @@
 | [22. 括号生成](#[22. 括号生成](https://leetcode-cn.com/problems/generate-parentheses/)) |       给定括号的对数，生成所有可能的并且有效的括号组合       |       回溯        |
 | [24. 两两交换链表中的节点](#[24. 两两交换链表中的节点](https://leetcode-cn.com/problems/swap-nodes-in-pairs/)) |                   两两交换链表中元素的位置                   |       链表        |
 | [48. 旋转图像](#[48. 旋转图像](https://leetcode-cn.com/problems/rotate-image/)) |                         原地旋转图像                         |       交互        |
+| [73. 矩阵置零](#[73. 矩阵置零](https://leetcode-cn.com/problems/set-matrix-zeroes/)) |                    原地将0所在的行列清零                     |     迭代+延迟     |
 | [92. 反转链表 II](#[92. 反转链表 II](https://leetcode-cn.com/problems/reverse-linked-list-ii/)) |                       翻转链表的一部分                       |       链表        |
 | [131. 分割回文串](#[131. 分割回文串](https://leetcode-cn.com/problems/palindrome-partitioning/)) |          一个字符串可能的分割情况，每个子串为回文串          |   回溯+动态规划   |
 | [150. 逆波兰表达式求值](#[150. 逆波兰表达式求值](https://leetcode-cn.com/problems/evaluate-reverse-polish-notation/)) |                    根据逆波兰表达式求结果                    |        栈         |
@@ -713,6 +714,48 @@ public:
 };
 //可以先水平翻转，再对角线翻转
 ```
+
+#### [73. 矩阵置零](https://leetcode-cn.com/problems/set-matrix-zeroes/)
+
+```c++
+class Solution {
+public:
+	void setZeroes(vector<vector<int>>& matrix) {
+		int n = matrix.size(), m = matrix[0].size();
+		int curZero = 0, nextZero = 0;
+		for (int i = 0; i < m; ++i) { //统计当前行是否有0
+			if (matrix[0][i] == 0) {
+				curZero = 1;
+				break;
+			}
+		}
+		for (int i = 1; i <= n; ++i) {
+			int i_1 = i - 1;
+			nextZero = 0;
+			if (i < n) { 
+				for (int j = 0; j < m; ++j) {
+					if (matrix[i][j] == 0) { //先统计当前行有0无
+						int k = i_1;
+						while (k >= 0)matrix[k--][j] = 0;
+						nextZero = 1;
+					}
+					else if (matrix[i_1][j] == 0) { //再看上一行是否为0
+						matrix[i][j] = 0;
+					}
+
+				}
+			}
+			if (curZero) { //将上一行清零
+				for (int j = 0; j < m; ++j)matrix[i_1][j] = 0;
+			}
+			curZero = nextZero;//当前行变为上一行
+		}
+
+	}
+};
+```
+
+
 
 #### [92. 反转链表 II](https://leetcode-cn.com/problems/reverse-linked-list-ii/)
 
