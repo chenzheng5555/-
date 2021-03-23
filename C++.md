@@ -12,7 +12,7 @@
 + 注释：单行`//`，成对`/*  */`，不可嵌套
 + 文件重定向：文件作为输入 <infile；输出到文件 >outfile
 
-## 变量
+# 变量
 
 + 对象的类型决定了对其可执行的操作，**C++在编译时会进行类型检查**，是一种静态语言，所以变量必须先声明后使用。**分开定义和声明，使得C++支持分开编译**，一个文件定义，多个文件声明。
   
@@ -39,20 +39,11 @@
 
 + 自定义类型，struct和class。
 
-### string
-
-长度任意的字符串，`#include<string> using std::string;`。
-
-+ 初始化：`string s,s1="",s2=s1,s3(s2),s4(10,'a');`；
-+ 操作：`s.empty()、s.size()、s[i]、s1+s2、s1>s2;`，`cin>>s1;`空白符终止，`getline(cin,s1);`读取一行。
-+ 字符处理`#include<cctype>`，`isalnum(c)、isalpha(c)、isdigit(c)、islower(c)、toupper(c)`。
-+ 对c的支持：`const char *s=s1.c_str()`
-
-## 操作符
+# 操作符
 
 
 
-## 函数
+# 函数
 
 **使用前，必须先声明**
 
@@ -62,8 +53,6 @@
 void func(initializer_list<int> a);//传递`initializer_list<T>`类型的参数。
 void func(int a,...)//省略符形参`...`。
 ```
-
-### lambda
 
 
 
@@ -143,7 +132,7 @@ protected://只有自己和子类可以访问，
 
 + 成员函数被调用时，可以通过**隐式的参数this**获取调用该函数的对象。
 
-+ const member function：const放在函数参数列表后面，修改的是隐藏的this指针，即不允许修改对象。
++ const member function：**const放在函数参数列表后面**，修改的是隐藏的this指针，即不允许修改对象。
 + 可以基于const对函数进行重载。
 
 ## 构造和析构
@@ -183,7 +172,7 @@ class A{
 
 + 虚函数`virtual`。
 
-## 运算符重载：
+## 运算符重载
 
 ```c++
 if(a<b) //优先级：成员函数的重载运算符>全局重载函数
@@ -230,42 +219,77 @@ template <class T> const T &mymin(const T &a, const T &b) {
 
 # 智能指针
 
-
-
-# C++库
-
-## IO
+# IO
 
 + IO类型的对象不可以赋值。iostream（基础）、fstream（文件）、sstream（字符串）；读写IO对象会修改对象，所以不能为const。
 + 可以通过stream的状态iostate获取当前状态。
 + output buffer管理：buffer刷新（程序结束、buffer满、使用endl或unitbuf、相关联的流发生读写）。程序crash，buffer不会刷新。
 + 文件流fstream：`fstream in(file),.open(),.close()`,对象销毁时自动调用close()。
 + 文件模式：in、out、app接着尾写、ate文件尾、trunc截断、binary二进制。
-+ string流：从字符串读写，`sstream strm(s),strm.str(),strm.str(s);`。
 
-## 容器
+# 容器
 
-### 顺序容器
+```c++
+class container{
+public:
+    using value_type      = typename _Container::value_type;
+    using reference       = typename _Container::reference;
+    using const_reference = typename _Container::const_reference;
+    using size_type       = typename _Container::size_type;
+    using container_type  = _Container;
+}
+```
 
-元素的顺序对应元素加入时的位置。快速顺序获取元素。
 
-+ vector：连续内存，快速获取元素。deque：快速获取、头尾删除。string：字符vector
-+ list：方便插入和删除。forward_list：单链表。
-+ array：固定的数组。
-+ 容器操作：`(const_)iterator,size_type,difference_type(迭代器),value_type,(const_)reference`。都定义了自增操作。
-+ 构造函数：`A a,a(b),a(it.begin,it.end),a{1,2,……},a(n,k)`。需要元素类型有默认的构造函数。
-+ 赋值：`c1=c2,c1={1,2,……},a.swap(b),swap(a,b)`。
-+ 大小：`a.size(),a.max_size(),a.empty()`，关系判断：`==,<=,……`。
-+ 添加/删除元素：`a.insert(c),a.emplace(c),a.erase(c),a.clear()`。
-+ 迭代器：`a.(r)begin(),a.(r)end(),reverse_iterator`。
 
-### 关联容器
+## 顺序容器
+
+### vector
+
+```c++
+template <class _Myvec> class _Vector_const_iterator : public _Iterator_base {};
+template <class _Myvec> class _Vector_iterator : public _Vector_const_iterator<_Myvec> {};
+template <class _Val_types> class _Vector_val : public _Container_base {};
+template <class _Ty, class _Alloc = allocator<_Ty>>class vector{
+private:
+    template <class> friend class _Vb_val;
+    friend _Tidy_guard<vector>;
+};
+```
+
+### stack
+
+```c++
+//使用deque实现的，声明里默认容器的参数为deque
+template <class _Ty, class _Container = deque<_Ty>> class stack; 
+//定义，类里包括一个deque c私有成员变量。
+template <class _Ty, class _Container> 
+class stack {
+public:
+    //stack.top()返回的是引用或const引用
+    _NODISCARD reference top() noexcept(noexcept(c.back())) { return c.back();}
+    _NODISCARD const_reference top() const noexcept(noexcept(c.back())) { return c.back();}
+protected:
+    _Container c{};
+};
+```
+
+
+
+## 关联容器
 
 元素通过关键字进行存储和检索，支持高效地查找。
 
-### 分配器
+### map
 
-operator new -> malloc ；除了申请的大小，添加了一些head。
+```c++
+template <class _Kty, class _Ty, class _Pr = less<_Kty>, class _Alloc = allocator<pair<const _Kty, _Ty>>>
+class map : public _Tree<_Tmap_traits<_Kty, _Ty, _Pr, _Alloc, false>> {...};
+```
+
+## 分配器
+
+operator new最后调用malloc ；除了申请的大小，添加了一些head。
 
 
 

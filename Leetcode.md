@@ -46,6 +46,7 @@
 | [227. 基本计算器 II](#[227. 基本计算器 II](https://leetcode-cn.com/problems/basic-calculator-ii/)) | [224. 基本计算器](#[224. 基本计算器](https://leetcode-cn.com/problems/basic-calculator/))，增加了*和/ |        栈         |
 | [300. 最长递增子序列](#[300. 最长递增子序列](https://leetcode-cn.com/problems/longest-increasing-subsequence/)) | 求递增的最长子序列[354.俄罗斯套娃信封问题](#[354. 俄罗斯套娃信封问题](https://leetcode-cn.com/problems/russian-doll-envelopes/)) |     动态规划      |
 | [331. 验证二叉树的前序序列化](#[331. 验证二叉树的前序序列化](https://leetcode-cn.com/problems/verify-preorder-serialization-of-a-binary-tree/)) |            验证一个字符串是否符合二叉树的前序遍历            |  二叉树前序遍历   |
+| [341. 扁平化嵌套列表迭代器](#[341. 扁平化嵌套列表迭代器](https://leetcode-cn.com/problems/flatten-nested-list-iterator/)) |                       嵌套列表的迭代器                       |        栈         |
 | [424. 替换后的最长重复字符](#[424. 替换后的最长重复字符](https://leetcode-cn.com/problems/longest-repeating-character-replacement/)) |         任意替换K个字符，使得重复字符构成的子串最长          |   滑动窗口+统计   |
 | [503. 下一个更大元素 II](#[503. 下一个更大元素 II](https://leetcode-cn.com/problems/next-greater-element-ii/)) |           一个循环数组，给出每个元素下一个更大元素           |  栈存储递减序列   |
 | [567. 字符串的排列](#[567. 字符串的排列](https://leetcode-cn.com/problems/permutation-in-string/)) |            判断一个字符串是否为另一个字符串的排序            |    双指针+统计    |
@@ -1236,6 +1237,46 @@ public:
     }
 };
 ```
+
+#### [341. 扁平化嵌套列表迭代器](https://leetcode-cn.com/problems/flatten-nested-list-iterator/)
+
+```c++
+//更新方法值得学习
+class NestedIterator {
+	stack<pair<vector<NestedInteger>::iterator, vector<NestedInteger>::iterator>> st;
+	void update() {
+		while (!st.empty()) {      //压入之后，会将没有元素的嵌套表弹出来
+			if (st.top().first == st.top().second) {
+				st.pop();
+				continue;
+			}
+			if (st.top().first->isInteger()) {//检测到当前区间的指针为整数。
+				break;
+			}
+
+			auto& it = st.top().first++->getList(); //压入新嵌套表时，上一个指针后移一位。引用
+			st.emplace(it.begin(), it.end());      //
+		}
+	}
+public:
+	NestedIterator(vector<NestedInteger>& nestedList) {
+		st.emplace(nestedList.begin(), nestedList.end());
+		update();
+	}
+
+	int next() {
+		int x = st.top().first++->getInteger();
+		update();
+		return x;
+	}
+
+	bool hasNext() {
+		return !st.empty();
+	}
+};
+```
+
+
 
 #### [354. 俄罗斯套娃信封问题](https://leetcode-cn.com/problems/russian-doll-envelopes/)
 
