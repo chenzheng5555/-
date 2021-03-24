@@ -1,110 +1,32 @@
 ## 目录
 
-### 简单
+### 知识点归类
 
-|                             题目                             |                             说明                             |     知识点     |
-| :----------------------------------------------------------: | :----------------------------------------------------------: | :------------: |
-| [1. 两数之和](#[1. 两数之和](https://leetcode-cn.com/problems/two-sum/)) |                找数组内某两个数，其和为指定值                |      hash      |
-| [20. 有效的括号](#[20. 有效的括号](https://leetcode-cn.com/problems/valid-parentheses/)) |                   判断由括号的排列是否有效                   |       栈       |
-| [21. 合并两个有序链表](#[21. 合并两个有序链表](https://leetcode-cn.com/problems/merge-two-sorted-lists/)) |                    使合并后的链表仍然有序                    |   递归、迭代   |
-| [119. 杨辉三角 II](#[119. 杨辉三角 II](https://leetcode-cn.com/problems/pascals-triangle-ii/)) |                     求第n行杨辉三角的值                      | 迭代、数值运算 |
-| [232. 用栈实现队列](#[232. 用栈实现队列](https://leetcode-cn.com/problems/implement-queue-using-stacks/)) |                      使用两个栈实现队列                      |    队列+栈     |
-| [448. 找到所有数组中消失的数字](#[448. 找到所有数组中消失的数字](https://leetcode-cn.com/problems/find-all-numbers-disappeared-in-an-array/)) | 长度为n的数组，求数组中1-n缺少的整数[41. 缺失的第一个正数](#[41. 缺失的第一个正数](https://leetcode-cn.com/problems/first-missing-positive/)) |    原地修改    |
-| [485. 最大连续1的个数](#[485. 最大连续1的个数](https://leetcode-cn.com/problems/max-consecutive-ones/)) |                计算数组中连续1子串的最大长度                 |      迭代      |
-| [561. 数组拆分 I](#[561. 数组拆分 I](https://leetcode-cn.com/problems/array-partition-i/)) |             数组分为n对，使得每对最小值之和最大              |      排序      |
-| [566. 重塑矩阵](#[566. 重塑矩阵](https://leetcode-cn.com/problems/reshape-the-matrix/)) |                        矩阵的reshape                         |      遍历      |
-| [643. 子数组最大平均数 I](#[643. 子数组最大平均数 I](https://leetcode-cn.com/problems/maximum-average-subarray-i/)) |                 长度为k且平均值最大的子序列                  |    滑动窗口    |
-| [665. 非递减数列](#[665. 非递减数列](https://leetcode-cn.com/problems/non-decreasing-array/)) |              最多一次改变，使得数组为非递减数列              |  统计修改次数  |
-| [697. 数组的度](#[697. 数组的度](https://leetcode-cn.com/problems/degree-of-an-array/)) |    子序列 重复元素出现的最大次数与原数组相同的最长子序列     |      哈希      |
-| [703. 数据流中的第 K 大元素](#[703. 数据流中的第 K 大元素](https://leetcode-cn.com/problems/kth-largest-element-in-a-stream/)) |                新加元素后，求数组第K大的元素                 |     最小堆     |
-| [724. 寻找数组的中心索引](#[724. 寻找数组的中心索引](https://leetcode-cn.com/problems/find-pivot-index/)) |                     索引两边元素之和相等                     |      遍历      |
-| [766. 托普利茨矩阵](#[766. 托普利茨矩阵](https://leetcode-cn.com/problems/toeplitz-matrix/)) |               相邻右下角元素等于当前元素的矩阵               |      遍历      |
-| [832. 翻转图像](#[832. 翻转图像](https://leetcode-cn.com/problems/flipping-an-image/)) |                      水平翻转再反转图片                      |      交换      |
-| [867. 转置矩阵](#[867. 转置矩阵](https://leetcode-cn.com/problems/transpose-matrix/)) |                        矩阵的转置操作                        |      遍历      |
-| [888. 公平的糖果棒交换](#[888. 公平的糖果棒交换](https://leetcode-cn.com/problems/fair-candy-swap/)) |              交互两数组的某个元素，使数组和相等              |      哈希      |
-| [1047. 删除字符串中的所有相邻重复项](#[1047. 删除字符串中的所有相邻重复项](https://leetcode-cn.com/problems/remove-all-adjacent-duplicates-in-string/)) |              不断重复删除字符串中存在的相邻字符              |       栈       |
-| [1742. 盒子中小球的最大数量](#[1742. 盒子中小球的最大数量](https://leetcode-cn.com/problems/maximum-number-of-balls-in-a-box/)) |                        求整数各位之和                        |      哈希      |
-| [1779. 找到最近的有相同 X 或 Y 坐标的点](#[1779. 找到最近的有相同 X 或 Y 坐标的点](https://leetcode-cn.com/problems/find-nearest-point-that-has-the-same-x-or-y-coordinate/)) |                           找最小值                           |      遍历      |
-| [1784. 检查二进制字符串字段](#[1784. 检查二进制字符串字段](https://leetcode-cn.com/problems/check-if-binary-string-has-at-most-one-segment-of-ones/)) |               判断字符串只包含一个全是1的子串                |      遍历      |
-|                                                              |                                                              |                |
-
-
-
-### 中等
-
-|                             题目                             |                             说明                             |      知识点       |
-| :----------------------------------------------------------: | :----------------------------------------------------------: | :---------------: |
-| [2. 两数相加](#[2. 两数相加](https://leetcode-cn.com/problems/add-two-numbers/)) |           整数在链表中逆序存储，求两个这样整数的和           |       链表        |
-| [3. 无重复字符的最长子串](#[3. 无重复字符的最长子串](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/)) |                不含有重复字符的最长子串的长度                |    双指针+统计    |
-| [22. 括号生成](#[22. 括号生成](https://leetcode-cn.com/problems/generate-parentheses/)) |       给定括号的对数，生成所有可能的并且有效的括号组合       |       回溯        |
-| [24. 两两交换链表中的节点](#[24. 两两交换链表中的节点](https://leetcode-cn.com/problems/swap-nodes-in-pairs/)) |                   两两交换链表中元素的位置                   |       链表        |
-| [48. 旋转图像](#[48. 旋转图像](https://leetcode-cn.com/problems/rotate-image/)) |                         原地旋转图像                         |       交互        |
-| [73. 矩阵置零](#[73. 矩阵置零](https://leetcode-cn.com/problems/set-matrix-zeroes/)) |                    原地将0所在的行列清零                     |     迭代+延迟     |
-| [92. 反转链表 II](#[92. 反转链表 II](https://leetcode-cn.com/problems/reverse-linked-list-ii/)) |                       翻转链表的一部分                       |       链表        |
-| [131. 分割回文串](#[131. 分割回文串](https://leetcode-cn.com/problems/palindrome-partitioning/)) |          一个字符串可能的分割情况，每个子串为回文串          |   回溯+动态规划   |
-| [150. 逆波兰表达式求值](#[150. 逆波兰表达式求值](https://leetcode-cn.com/problems/evaluate-reverse-polish-notation/)) |                    根据逆波兰表达式求结果                    |        栈         |
-| [227. 基本计算器 II](#[227. 基本计算器 II](https://leetcode-cn.com/problems/basic-calculator-ii/)) | [224. 基本计算器](#[224. 基本计算器](https://leetcode-cn.com/problems/basic-calculator/))，增加了*和/ |        栈         |
-| [300. 最长递增子序列](#[300. 最长递增子序列](https://leetcode-cn.com/problems/longest-increasing-subsequence/)) | 求递增的最长子序列[354.俄罗斯套娃信封问题](#[354. 俄罗斯套娃信封问题](https://leetcode-cn.com/problems/russian-doll-envelopes/)) |     动态规划      |
-| [331. 验证二叉树的前序序列化](#[331. 验证二叉树的前序序列化](https://leetcode-cn.com/problems/verify-preorder-serialization-of-a-binary-tree/)) |            验证一个字符串是否符合二叉树的前序遍历            |  二叉树前序遍历   |
-| [341. 扁平化嵌套列表迭代器](#[341. 扁平化嵌套列表迭代器](https://leetcode-cn.com/problems/flatten-nested-list-iterator/)) |                       嵌套列表的迭代器                       |        栈         |
-| [424. 替换后的最长重复字符](#[424. 替换后的最长重复字符](https://leetcode-cn.com/problems/longest-repeating-character-replacement/)) |         任意替换K个字符，使得重复字符构成的子串最长          |   滑动窗口+统计   |
-| [456. 132模式](#[456. 132模式](https://leetcode-cn.com/problems/132-pattern/)) |                求子序列，满足ai<ak<aj;i<j<k;                 |     区间比较      |
-| [503. 下一个更大元素 II](#[503. 下一个更大元素 II](https://leetcode-cn.com/problems/next-greater-element-ii/)) |           一个循环数组，给出每个元素下一个更大元素           |  栈存储递减序列   |
-| [567. 字符串的排列](#[567. 字符串的排列](https://leetcode-cn.com/problems/permutation-in-string/)) |            判断一个字符串是否为另一个字符串的排序            |    双指针+统计    |
-| [907. 子数组的最小值之和](#[907. 子数组的最小值之和](https://leetcode-cn.com/problems/sum-of-subarray-minimums/)) |                 求所有连续子数组的最小值之和                 |  栈存储递增序列   |
-| [978. 最长湍流子数组](#[978. 最长湍流子数组](https://leetcode-cn.com/problems/longest-turbulent-subarray/)) |                     相邻元素大小不断变化                     |      双指针       |
-| [1004. 最大连续1的个数 III](#[1004. 最大连续1的个数 III](https://leetcode-cn.com/problems/max-consecutive-ones-iii/)) | [485 ](#[485. 最大连续1的个数](https://leetcode-cn.com/problems/max-consecutive-ones/))、[424](#[424. 替换后的最长重复字符](https://leetcode-cn.com/problems/longest-repeating-character-replacement/))、[1208](#[1208. 尽可能使字符串相等](https://leetcode-cn.com/problems/get-equal-substrings-within-budget/))、 |   滑动窗口+统计   |
-| [1052. 爱生气的书店老板](#[1052. 爱生气的书店老板](https://leetcode-cn.com/problems/grumpy-bookstore-owner/)) |                  大小为k的窗口内，增加的数                   |     滑动窗口      |
-| [1143. 最长公共子序列](#[1143. 最长公共子序列](https://leetcode-cn.com/problems/longest-common-subsequence/)) | 匹配的最长子序列、可以不连续[115. 不同的子序列](#[115. 不同的子序列](https://leetcode-cn.com/problems/distinct-subsequences/))、 |     动态规划      |
-| [1208. 尽可能使字符串相等](#[1208. 尽可能使字符串相等](https://leetcode-cn.com/problems/get-equal-substrings-within-budget/)) |   两字符串对应的子串 各位置的差之和<cost，求子串长度最大值   |     滑动窗口      |
-| [1423. 可获得的最大点数](#[1423. 可获得的最大点数](https://leetcode-cn.com/problems/maximum-points-you-can-obtain-from-cards/)) |              在数组尾和首取数，取K个，使和最大               |     滑动窗口      |
-| [1438. 绝对差不超过限制的最长连续子数组](#[1438. 绝对差不超过限制的最长连续子数组](https://leetcode-cn.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/)) |           最大值最小值之差不大于limit的最长子序列            | 滑动窗口+单调队列 |
-| [1631. 最小体力消耗路径](#[1631. 最小体力消耗路径](https://leetcode-cn.com/problems/path-with-minimum-effort/)) |               最短路径，值为相邻节点的最大差值               | 并查集、dijkstra  |
-| [1743. 从相邻元素对还原数组](#[1743. 从相邻元素对还原数组](https://leetcode-cn.com/problems/restore-the-array-from-adjacent-pairs/)) |                给出相邻元素组成的对，求原数组                |     哈希+遍历     |
-| [1780. 一个数字是否可以表示成三的幂的和](#[1780. 判断一个数字是否可以表示成三的幂的和](https://leetcode-cn.com/problems/check-if-number-is-a-sum-of-powers-of-three/)) |                一个数能否表示为3的不同幂之和                 |       进制        |
-| [1785. 构成特定和需要添加的最少元素](#[1785. 构成特定和需要添加的最少元素](https://leetcode-cn.com/problems/minimum-elements-to-add-to-form-a-given-sum/)) |               总和与目标值的差值与给定值的倍数               |       遍历        |
-| [1792.最大平均通过率](#[1792. 最大平均通过率](https://leetcode-cn.com/problems/maximum-average-pass-ratio/)) |                 分子分母同时加一，增量的比较                 |     优先队列      |
-|                                                              |                                                              |                   |
-
-### 困难
-
-|                             题目                             |                             说明                             |               知识点                |
-| :----------------------------------------------------------: | :----------------------------------------------------------: | :---------------------------------: |
-| [4. 寻找两个正序数组的中位数](#[4. 寻找两个正序数组的中位数](https://leetcode-cn.com/problems/median-of-two-sorted-arrays/)) |          两个正序排列数组组合，其正序排列后的中位数          |          双指针、二分查找           |
-| [23. 合并K个升序链表](#[23. 合并K个升序链表](https://leetcode-cn.com/problems/merge-k-sorted-lists/)) | [21. 合并两个有序链表](#[21. 合并两个有序链表](https://leetcode-cn.com/problems/merge-two-sorted-lists/))的扩展 |      最小堆（优先队列）、分治       |
-| [25. K 个一组翻转链表](#[25. K 个一组翻转链表](https://leetcode-cn.com/problems/reverse-nodes-in-k-group/)) |                      链表每K个进行翻转                       |                链表                 |
-| [30. 串联所有单词的子串](#[30. 串联所有单词的子串](https://leetcode-cn.com/problems/substring-with-concatenation-of-all-words/)) |             单词任意排列后，能否作为字符串的子串             |                哈希                 |
-| [32. 最长有效括号](#[32. 最长有效括号](https://leetcode-cn.com/problems/longest-valid-parentheses/)) |                      括号匹配的最长子串                      |       动态规划、栈、双向遍历        |
-| [37. 解数独](#[37. 解数独](https://leetcode-cn.com/problems/sudoku-solver/)) |                        求9*9数独的解                         |          递归、位运算优化           |
-| [41. 缺失的第一个正数](#[41. 缺失的第一个正数](https://leetcode-cn.com/problems/first-missing-positive/)) | O(n)/O(1)[消失的两个数字](https://leetcode-cn.com/problems/missing-two-lcci/) |              就地哈希               |
-| [115. 不同的子序列](#[115. 不同的子序列](https://leetcode-cn.com/problems/distinct-subsequences/)) |                       匹配的子序列个数                       |              动态规划               |
-| [124. 二叉树中的最大路径和](#[124. 二叉树中的最大路径和](https://leetcode-cn.com/problems/binary-tree-maximum-path-sum/)) |                求二叉树里路径和最大的一条路径                |              动态规划               |
-| [132. 分割回文串 II](#[132. 分割回文串 II](https://leetcode-cn.com/problems/palindrome-partitioning-ii/)) | [131. 分割回文串](#[131. 分割回文串](https://leetcode-cn.com/problems/palindrome-partitioning/))中最小的分割次数 |              动态规划               |
-| [224. 基本计算器](#[224. 基本计算器](https://leetcode-cn.com/problems/basic-calculator/)) |                给表达式字符串，计算表达式结果                |             栈+括号扩展             |
-| [354. 俄罗斯套娃信封问题](#[354. 俄罗斯套娃信封问题](https://leetcode-cn.com/problems/russian-doll-envelopes/)) |            求两个维度上，都严格递增，的最长数组。            |         动态规划、二分查找          |
-| [420. 强密码检验器](#[420. 强密码检验器](https://leetcode-cn.com/problems/strong-password-checker/)) |                     变为强密码所需的操作                     |              优先队列               |
-| [480. 滑动窗口中位数](#[480. 滑动窗口中位数](https://leetcode-cn.com/problems/sliding-window-median/)) | 长度为k的窗口在数组上滑动，求窗口内的中位数[连续中值](https://leetcode-cn.com/problems/continuous-median-lcci/) | 最大堆和最小堆（优先队列+延迟删除） |
-| [564. 寻找最近的回文数](#[564. 寻找最近的回文数](https://leetcode-cn.com/problems/find-the-closest-palindrome/)) |               给字符串表示的数，求最近的回文数               |           字符串+详细讨论           |
-| [629. K个逆序对数组](#[629. K个逆序对数组](https://leetcode-cn.com/problems/k-inverse-pairs-array/)) |         数字1-n组成的数组，其中逆序对为k的数组的个数         |           动态规划+窗口和           |
-| [730. 统计不同回文子序列](https://leetcode-cn.com/problems/count-different-palindromic-subsequences/) | 不同回文子序列的个数[1458. 两个子序列的最大点积](https://leetcode-cn.com/problems/max-dot-product-of-two-subsequences/) |              动态规划               |
-| [765. 情侣牵手](#[765. 情侣牵手](https://leetcode-cn.com/problems/couples-holding-hands/)) |              使情侣全坐在相邻座位需要调整的次数              |        并查集、dfs、连通分量        |
-| [862. 和至少为 K 的最短子数组](#[862. 和至少为 K 的最短子数组](https://leetcode-cn.com/problems/shortest-subarray-with-sum-at-least-k/)) |                    求满足要求的最短子数组                    |         前缀和+递增双端队列         |
-| [906. 超级回文数](#[906. 超级回文数](https://leetcode-cn.com/problems/super-palindromes/)) | 自己是回文数，平方也是，[564. 寻找最近的回文数](#[564. 寻找最近的回文数](https://leetcode-cn.com/problems/find-the-closest-palindrome/)) |                乘法                 |
-| [940. 不同的子序列 II](#[940. 不同的子序列 II](https://leetcode-cn.com/problems/distinct-subsequences-ii/)) | 不同子序列的个数[730. 统计不同回文子序列](https://leetcode-cn.com/problems/count-different-palindromic-subsequences/) |              动态规划               |
-| [992. K 个不同整数的子数组](#[992. K 个不同整数的子数组](https://leetcode-cn.com/problems/subarrays-with-k-different-integers/)) |                 k个不同整数构成的子数组个数                  |       双指针+统计（问题改变）       |
-| [995. K 连续位的最小翻转次数](#[995. K 连续位的最小翻转次数](https://leetcode-cn.com/problems/minimum-number-of-k-consecutive-bit-flips/)) |          一次翻转k位，使数组全为1需要的最小翻转次数          |               位运算                |
-| [1044. 最长重复子串](#[1044. 最长重复子串](https://leetcode-cn.com/problems/longest-duplicate-substring/)) |                        快速字符串hash                        |         二分查找+字符串哈希         |
-| [1074. 子矩阵数量](#[1074. 元素和为目标值的子矩阵数量](https://leetcode-cn.com/problems/number-of-submatrices-that-sum-to-target/)) |                   元素和满足要求的子矩阵数                   |              遍历+哈希              |
-| [1172. 餐盘栈](#[1172. 餐盘栈](https://leetcode-cn.com/problems/dinner-plate-stacks/)) |                  模拟多个stack按规定操作，                   |                模拟                 |
-| [1178. 猜字谜](#[1178. 猜字谜](https://leetcode-cn.com/problems/number-of-valid-words-for-each-puzzle/)) |                    求每个字谜对应的谜底数                    |           二进制状态压缩            |
-| [1458. 两个子序列的最大点积](https://leetcode-cn.com/problems/max-dot-product-of-two-subsequences/) | 子序列的最大点积[1143. 最长公共子序列](#[1143. 最长公共子序列](https://leetcode-cn.com/problems/longest-common-subsequence/)) |              动态规划               |
-| [1610. 可见点的最大数目](#[1610. 可见点的最大数目](https://leetcode-cn.com/problems/maximum-number-of-visible-points/)) | 可见角度能看见的最多点数，区间和的最大值[503](#[503. 下一个更大元素 II](https://leetcode-cn.com/problems/next-greater-element-ii/)) |              滑动窗口               |
-| [1622. 奇妙序列](#[1622. 奇妙序列](https://leetcode-cn.com/problems/fancy-sequence/)) |                        数组整体的加法                        |         线段数组、乘法逆元          |
-| [1782. 统计点对的数目](#[1782. 统计点对的数目](https://leetcode-cn.com/problems/count-pairs-of-nodes/)) |                    边数满足要求的顶点对数                    |            双指针求和，             |
-| [LCP 14. 切分数组](#[LCP 14. 切分数组](https://leetcode-cn.com/problems/qie-fen-shu-zu/)) |          子数组两端元素最小公约数>1；分割的最少次数          |          质数因子+动态规划          |
-| [17.26. 稀疏相似度](#[面试题 17.26. 稀疏相似度](https://leetcode-cn.com/problems/sparse-similarity-lcci/)) |                          数组的交集                          |           数组元素的哈希            |
-| [17.24. 最大子矩阵](#[面试题 17.24. 最大子矩阵](https://leetcode-cn.com/problems/max-submatrix-lcci/)) | [1074. 元素和为目标值](#[1074. 元素和为目标值的子矩阵数量](https://leetcode-cn.com/problems/number-of-submatrices-that-sum-to-target/))、[862. 和至少为 K ](#[862. 和至少为 K 的最短子数组](https://leetcode-cn.com/problems/shortest-subarray-with-sum-at-least-k/)) |              动态规划               |
-| [17.06. 2出现的次数]([面试题 17.06. 2出现的次数](https://leetcode-cn.com/problems/number-of-2s-in-range-lcci/)) |                      求0-n,2出现的次数                       |                规律                 |
+|      类别      |                             题目                             |
+| :------------: | :----------------------------------------------------------: |
+|  遍历（翻转）  | [566. 重塑矩阵](#[566. 重塑矩阵](https://leetcode-cn.com/problems/reshape-the-matrix/))、[766. 托普利茨矩阵](#[766. 托普利茨矩阵](https://leetcode-cn.com/problems/toeplitz-matrix/))、[832. 翻转图像](#[832. 翻转图像](https://leetcode-cn.com/problems/flipping-an-image/))、[48. 旋转图像](#[48. 旋转图像](https://leetcode-cn.com/problems/rotate-image/))、[867. 转置矩阵](#[867. 转置矩阵](https://leetcode-cn.com/problems/transpose-matrix/))、[1779. 找到最近的有相同 X 或 Y 坐标的点](#[1779. 找到最近的有相同 X 或 Y 坐标的点](https://leetcode-cn.com/problems/find-nearest-point-that-has-the-same-x-or-y-coordinate/))、[1784. 检查二进制字符串字段](#[1784. 检查二进制字符串字段](https://leetcode-cn.com/problems/check-if-binary-string-has-at-most-one-segment-of-ones/))、[1785. 构成特定和需要添加的最少元素](#[1785. 构成特定和需要添加的最少元素](https://leetcode-cn.com/problems/minimum-elements-to-add-to-form-a-given-sum/))、 |
+|      迭代      | [21. 合并两个有序链表](#[21. 合并两个有序链表](https://leetcode-cn.com/problems/merge-two-sorted-lists/))、[485. 最大连续1的个数](#[485. 最大连续1的个数](https://leetcode-cn.com/problems/max-consecutive-ones/))、 |
+|      链表      | [2. 两数相加](#[2. 两数相加](https://leetcode-cn.com/problems/add-two-numbers/))、[24. 两两交换链表中的节点](#[24. 两两交换链表中的节点](https://leetcode-cn.com/problems/swap-nodes-in-pairs/))、[25. K 个一组翻转链表](#[25. K 个一组翻转链表](https://leetcode-cn.com/problems/reverse-nodes-in-k-group/))、[82. 删除排序链表中的重复元素 II](#[82. 删除排序链表中的重复元素 II](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/))、[92. 反转链表 II](#[92. 反转链表 II](https://leetcode-cn.com/problems/reverse-linked-list-ii/))、 |
+|       栈       | [20. 有效的括号](#[20. 有效的括号](https://leetcode-cn.com/problems/valid-parentheses/))、[224. 基本计算器](#[224. 基本计算器](https://leetcode-cn.com/problems/basic-calculator/))、[227. 基本计算器 II](#[227. 基本计算器 II](https://leetcode-cn.com/problems/basic-calculator-ii/))、[150. 逆波兰表达式求值](#[150. 逆波兰表达式求值](https://leetcode-cn.com/problems/evaluate-reverse-polish-notation/))、[232. 用栈实现队列](#[232. 用栈实现队列](https://leetcode-cn.com/problems/implement-queue-using-stacks/))、[1047. 删除字符串中的所有相邻重复项](#[1047. 删除字符串中的所有相邻重复项](https://leetcode-cn.com/problems/remove-all-adjacent-duplicates-in-string/))、[341. 扁平化嵌套列表迭代器](#[341. 扁平化嵌套列表迭代器](https://leetcode-cn.com/problems/flatten-nested-list-iterator/))、 |
+| 单调栈（队列） | [503. 下一个更大元素 II](#[503. 下一个更大元素 II](https://leetcode-cn.com/problems/next-greater-element-ii/))、[907. 子数组的最小值之和](#[907. 子数组的最小值之和](https://leetcode-cn.com/problems/sum-of-subarray-minimums/))、[1438. 绝对差不超过限制的最长连续子数组](#[1438. 绝对差不超过限制的最长连续子数组](https://leetcode-cn.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/))、[862. 和至少为 K 的最短子数组](#[862. 和至少为 K 的最短子数组](https://leetcode-cn.com/problems/shortest-subarray-with-sum-at-least-k/))、 |
+|      排序      | [561. 数组拆分 I](#[561. 数组拆分 I](https://leetcode-cn.com/problems/array-partition-i/))、 |
+|   数值、规律   | [119. 杨辉三角 II](#[119. 杨辉三角 II](https://leetcode-cn.com/problems/pascals-triangle-ii/))、[1780. 一个数字是否可以表示成三的幂的和](#[1780. 判断一个数字是否可以表示成三的幂的和](https://leetcode-cn.com/problems/check-if-number-is-a-sum-of-powers-of-three/))、[564. 寻找最近的回文数](#[564. 寻找最近的回文数](https://leetcode-cn.com/problems/find-the-closest-palindrome/))、[面试题 17.06. 2出现的次数]([面试题 17.06. 2出现的次数](https://leetcode-cn.com/problems/number-of-2s-in-range-lcci/))、 |
+| 哈希、就地哈希 | [1. 两数之和](#[1. 两数之和](https://leetcode-cn.com/problems/two-sum/))、[41. 缺失的第一个正数](#[41. 缺失的第一个正数](https://leetcode-cn.com/problems/first-missing-positive/))、[448. 找到所有数组中消失的数字](#[448. 找到所有数组中消失的数字](https://leetcode-cn.com/problems/find-all-numbers-disappeared-in-an-array/))、[697. 数组的度](#[697. 数组的度](https://leetcode-cn.com/problems/degree-of-an-array/))、[888. 公平的糖果棒交换](#[888. 公平的糖果棒交换](https://leetcode-cn.com/problems/fair-candy-swap/))、[1742. 盒子中小球的最大数量](#[1742. 盒子中小球的最大数量](https://leetcode-cn.com/problems/maximum-number-of-balls-in-a-box/))、[1743. 从相邻元素对还原数组](#[1743. 从相邻元素对还原数组](https://leetcode-cn.com/problems/restore-the-array-from-adjacent-pairs/))、[30. 串联所有单词的子串](#[30. 串联所有单词的子串](https://leetcode-cn.com/problems/substring-with-concatenation-of-all-words/))、[1074. 元素和为目标值的子矩阵数量](#[1074. 元素和为目标值的子矩阵数量](https://leetcode-cn.com/problems/number-of-submatrices-that-sum-to-target/))、[面试题 17.26. 稀疏相似度](#[面试题 17.26. 稀疏相似度](https://leetcode-cn.com/problems/sparse-similarity-lcci/))、 |
+|    滑动窗口    | [643. 子数组最大平均数 I](#[643. 子数组最大平均数 I](https://leetcode-cn.com/problems/maximum-average-subarray-i/))、[424. 替换后的最长重复字符](#[424. 替换后的最长重复字符](https://leetcode-cn.com/problems/longest-repeating-character-replacement/))、[1004. 最大连续1的个数 III](#[1004. 最大连续1的个数 III](https://leetcode-cn.com/problems/max-consecutive-ones-iii/))、[1052. 爱生气的书店老板](#[1052. 爱生气的书店老板](https://leetcode-cn.com/problems/grumpy-bookstore-owner/))、[1208. 尽可能使字符串相等](#[1208. 尽可能使字符串相等](https://leetcode-cn.com/problems/get-equal-substrings-within-budget/))、[1423. 可获得的最大点数](#[1423. 可获得的最大点数](https://leetcode-cn.com/problems/maximum-points-you-can-obtain-from-cards/))、[1610. 可见点的最大数目](#[1610. 可见点的最大数目](https://leetcode-cn.com/problems/maximum-number-of-visible-points/))、 |
+|     多指针     | [665. 非递减数列](#[665. 非递减数列](https://leetcode-cn.com/problems/non-decreasing-array/))、[3. 无重复字符的最长子串](#[3. 无重复字符的最长子串](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/))、[567. 字符串的排列](#[567. 字符串的排列](https://leetcode-cn.com/problems/permutation-in-string/))、[978. 最长湍流子数组](#[978. 最长湍流子数组](https://leetcode-cn.com/problems/longest-turbulent-subarray/))、[4. 寻找两个正序数组的中位数](#[4. 寻找两个正序数组的中位数](https://leetcode-cn.com/problems/median-of-two-sorted-arrays/))、[992. K 个不同整数的子数组](#[992. K 个不同整数的子数组](https://leetcode-cn.com/problems/subarrays-with-k-different-integers/))、[1172. 餐盘栈](#[1172. 餐盘栈](https://leetcode-cn.com/problems/dinner-plate-stacks/))、[1782. 统计点对的数目](#[1782. 统计点对的数目](https://leetcode-cn.com/problems/count-pairs-of-nodes/))、 |
+|    优先队列    | [703. 数据流中的第 K 大元素](#[703. 数据流中的第 K 大元素](https://leetcode-cn.com/problems/kth-largest-element-in-a-stream/))、[1792.最大平均通过率](#[1792. 最大平均通过率](https://leetcode-cn.com/problems/maximum-average-pass-ratio/))、[23. 合并K个升序链表](#[23. 合并K个升序链表](https://leetcode-cn.com/problems/merge-k-sorted-lists/))、[420. 强密码检验器](#[420. 强密码检验器](https://leetcode-cn.com/problems/strong-password-checker/))、[480. 滑动窗口中位数](#[480. 滑动窗口中位数](https://leetcode-cn.com/problems/sliding-window-median/))、 |
+|     前缀和     | [724. 寻找数组的中心索引](#[724. 寻找数组的中心索引](https://leetcode-cn.com/problems/find-pivot-index/))、 |
+|      回溯      | [22. 括号生成](#[22. 括号生成](https://leetcode-cn.com/problems/generate-parentheses/))、 |
+| 延迟、等价问题 | [73. 矩阵置零](#[73. 矩阵置零](https://leetcode-cn.com/problems/set-matrix-zeroes/))、[480. 滑动窗口中位数](#[480. 滑动窗口中位数](https://leetcode-cn.com/problems/sliding-window-median/))、[906. 超级回文数](#[906. 超级回文数](https://leetcode-cn.com/problems/super-palindromes/))、 |
+|    动态规划    | [131. 分割回文串](#[131. 分割回文串](https://leetcode-cn.com/problems/palindrome-partitioning/))、[300. 最长递增子序列](#[300. 最长递增子序列](https://leetcode-cn.com/problems/longest-increasing-subsequence/))、[1143. 最长公共子序列](#[1143. 最长公共子序列](https://leetcode-cn.com/problems/longest-common-subsequence/))、[32. 最长有效括号](#[32. 最长有效括号](https://leetcode-cn.com/problems/longest-valid-parentheses/))、[115. 不同的子序列](#[115. 不同的子序列](https://leetcode-cn.com/problems/distinct-subsequences/))、[132. 分割回文串 II](#[132. 分割回文串 II](https://leetcode-cn.com/problems/palindrome-partitioning-ii/))、[354. 俄罗斯套娃信封问题](#[354. 俄罗斯套娃信封问题](https://leetcode-cn.com/problems/russian-doll-envelopes/))、[629. K个逆序对数组](#[629. K个逆序对数组](https://leetcode-cn.com/problems/k-inverse-pairs-array/))、[730. 统计不同回文子序列](https://leetcode-cn.com/problems/count-different-palindromic-subsequences/)、[940. 不同的子序列 II](#[940. 不同的子序列 II](https://leetcode-cn.com/problems/distinct-subsequences-ii/))、[1458. 两个子序列的最大点积](https://leetcode-cn.com/problems/max-dot-product-of-two-subsequences/)、[LCP 14. 切分数组](#[LCP 14. 切分数组](https://leetcode-cn.com/problems/qie-fen-shu-zu/))、[面试题 17.24. 最大子矩阵](#[面试题 17.24. 最大子矩阵](https://leetcode-cn.com/problems/max-submatrix-lcci/))、 |
+|      递归      | [331. 验证二叉树的前序序列化](#[331. 验证二叉树的前序序列化](https://leetcode-cn.com/problems/verify-preorder-serialization-of-a-binary-tree/))、[37. 解数独](#[37. 解数独](https://leetcode-cn.com/problems/sudoku-solver/))、 |
+|      逆序      | [456. 132模式](#[456. 132模式](https://leetcode-cn.com/problems/132-pattern/))、 |
+|    最短路径    | [1631. 最小体力消耗路径](#[1631. 最小体力消耗路径](https://leetcode-cn.com/problems/path-with-minimum-effort/))、 |
+|      贪心      | [124. 二叉树中的最大路径和](#[124. 二叉树中的最大路径和](https://leetcode-cn.com/problems/binary-tree-maximum-path-sum/))、 |
+|     并查集     | [765. 情侣牵手](#[765. 情侣牵手](https://leetcode-cn.com/problems/couples-holding-hands/))、 |
+|     位运算     | [995. K 连续位的最小翻转次数](#[995. K 连续位的最小翻转次数](https://leetcode-cn.com/problems/minimum-number-of-k-consecutive-bit-flips/))、 |
+|   字符串编码   | [1044. 最长重复子串](#[1044. 最长重复子串](https://leetcode-cn.com/problems/longest-duplicate-substring/))、[1178. 猜字谜](#[1178. 猜字谜](https://leetcode-cn.com/problems/number-of-valid-words-for-each-puzzle/))、 |
+|    范围问题   | [1622. 奇妙序列](#[1622. 奇妙序列](https://leetcode-cn.com/problems/fancy-sequence/))、 |
 
 ### 题解
 
@@ -714,6 +636,32 @@ public:
     }
 };
 //可以先水平翻转，再对角线翻转
+```
+
+#### [82. 删除排序链表中的重复元素 II](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/)
+
+```c++
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+        ListNode h(0,head);
+        ListNode* pre=&h;
+        while(head){
+            bool f=false;
+            while(head->next&&head->val==head->next->val){
+                f=true;
+                head=head->next;
+            }
+            if(f)pre->next=head->next;
+            else{
+                pre->next=head;
+                pre=head;
+            }
+            head=head->next;
+        }
+        return h.next;
+    }
+};
 ```
 
 #### [73. 矩阵置零](https://leetcode-cn.com/problems/set-matrix-zeroes/)
