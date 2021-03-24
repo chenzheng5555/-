@@ -1,5 +1,3 @@
-# git
-
 版本控制：本地$\longrightarrow$集中$\longrightarrow$分布式。[官方文档](https://git-scm.com/book/zh/v2)
 
 ## 配置
@@ -55,7 +53,7 @@ git config --global credential.helper store #保存密码
 
 ## 操作
 
-![lifecycle](工具/lifecycle.png)
+![lifecycle](img/lifecycle.png)
 
 1. 初始化：1）本地：`git init`，2）克隆：`git clone`本地master分支跟踪远程master分支。
 2. **记录操作**：Git 保存的不是文件的变化或者差异，而是一系列不同时刻的 **快照** 。
@@ -98,7 +96,7 @@ git remote remove <remote>           #移除远程仓库
   + 包含指向它的父对象的指针
   + 包含指向树对象（项目根目录，blob 对象索引）的指针，
 
-![image-20210321181656559](工具/image-20210321181656559.png)
+![image-20210321181656559](img/image-20210321181656559.png)
 
 Git 的默认分支名字是 `master`，有一个名为 `HEAD` 的特殊指针，**指向当前所在的本地分支**。
 
@@ -125,11 +123,11 @@ git mergetool
   5. 切回iss53分支继续开发。
   6. 切回master分支，将iss53合并到master分支。删除iss53分支
 
-![image-20210321191906161](工具/image-20210321191906161.png)
+![image-20210321191906161](img/image-20210321191906161.png)
 
 可以将各分支是为流水线，这样更好理解。
 
-![趋于稳定分支的工作流（“silo”）视图。](工具/lr-branches-2.png)
+![趋于稳定分支的工作流（“silo”）视图。](img/lr-branches-2.png)
 
 ### 合并冲突
 

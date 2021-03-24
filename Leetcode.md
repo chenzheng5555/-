@@ -48,6 +48,7 @@
 | [331. 验证二叉树的前序序列化](#[331. 验证二叉树的前序序列化](https://leetcode-cn.com/problems/verify-preorder-serialization-of-a-binary-tree/)) |            验证一个字符串是否符合二叉树的前序遍历            |  二叉树前序遍历   |
 | [341. 扁平化嵌套列表迭代器](#[341. 扁平化嵌套列表迭代器](https://leetcode-cn.com/problems/flatten-nested-list-iterator/)) |                       嵌套列表的迭代器                       |        栈         |
 | [424. 替换后的最长重复字符](#[424. 替换后的最长重复字符](https://leetcode-cn.com/problems/longest-repeating-character-replacement/)) |         任意替换K个字符，使得重复字符构成的子串最长          |   滑动窗口+统计   |
+| [456. 132模式](#[456. 132模式](https://leetcode-cn.com/problems/132-pattern/)) |                求子序列，满足ai<ak<aj;i<j<k;                 |     区间比较      |
 | [503. 下一个更大元素 II](#[503. 下一个更大元素 II](https://leetcode-cn.com/problems/next-greater-element-ii/)) |           一个循环数组，给出每个元素下一个更大元素           |  栈存储递减序列   |
 | [567. 字符串的排列](#[567. 字符串的排列](https://leetcode-cn.com/problems/permutation-in-string/)) |            判断一个字符串是否为另一个字符串的排序            |    双指针+统计    |
 | [907. 子数组的最小值之和](#[907. 子数组的最小值之和](https://leetcode-cn.com/problems/sum-of-subarray-minimums/)) |                 求所有连续子数组的最小值之和                 |  栈存储递增序列   |
@@ -75,14 +76,14 @@
 | [30. 串联所有单词的子串](#[30. 串联所有单词的子串](https://leetcode-cn.com/problems/substring-with-concatenation-of-all-words/)) |             单词任意排列后，能否作为字符串的子串             |                哈希                 |
 | [32. 最长有效括号](#[32. 最长有效括号](https://leetcode-cn.com/problems/longest-valid-parentheses/)) |                      括号匹配的最长子串                      |       动态规划、栈、双向遍历        |
 | [37. 解数独](#[37. 解数独](https://leetcode-cn.com/problems/sudoku-solver/)) |                        求9*9数独的解                         |          递归、位运算优化           |
-| [41. 缺失的第一个正数](#[41. 缺失的第一个正数](https://leetcode-cn.com/problems/first-missing-positive/)) |              O(n)/O(1)复杂度求未出现的最小整数               |              就地哈希               |
+| [41. 缺失的第一个正数](#[41. 缺失的第一个正数](https://leetcode-cn.com/problems/first-missing-positive/)) | O(n)/O(1)[消失的两个数字](https://leetcode-cn.com/problems/missing-two-lcci/) |              就地哈希               |
 | [115. 不同的子序列](#[115. 不同的子序列](https://leetcode-cn.com/problems/distinct-subsequences/)) |                       匹配的子序列个数                       |              动态规划               |
 | [124. 二叉树中的最大路径和](#[124. 二叉树中的最大路径和](https://leetcode-cn.com/problems/binary-tree-maximum-path-sum/)) |                求二叉树里路径和最大的一条路径                |              动态规划               |
 | [132. 分割回文串 II](#[132. 分割回文串 II](https://leetcode-cn.com/problems/palindrome-partitioning-ii/)) | [131. 分割回文串](#[131. 分割回文串](https://leetcode-cn.com/problems/palindrome-partitioning/))中最小的分割次数 |              动态规划               |
 | [224. 基本计算器](#[224. 基本计算器](https://leetcode-cn.com/problems/basic-calculator/)) |                给表达式字符串，计算表达式结果                |             栈+括号扩展             |
 | [354. 俄罗斯套娃信封问题](#[354. 俄罗斯套娃信封问题](https://leetcode-cn.com/problems/russian-doll-envelopes/)) |            求两个维度上，都严格递增，的最长数组。            |         动态规划、二分查找          |
 | [420. 强密码检验器](#[420. 强密码检验器](https://leetcode-cn.com/problems/strong-password-checker/)) |                     变为强密码所需的操作                     |              优先队列               |
-| [480. 滑动窗口中位数](#[480. 滑动窗口中位数](https://leetcode-cn.com/problems/sliding-window-median/)) |         长度为k的窗口在数组上滑动，求窗口内的中位数          | 最大堆和最小堆（优先队列+延迟删除） |
+| [480. 滑动窗口中位数](#[480. 滑动窗口中位数](https://leetcode-cn.com/problems/sliding-window-median/)) | 长度为k的窗口在数组上滑动，求窗口内的中位数[连续中值](https://leetcode-cn.com/problems/continuous-median-lcci/) | 最大堆和最小堆（优先队列+延迟删除） |
 | [564. 寻找最近的回文数](#[564. 寻找最近的回文数](https://leetcode-cn.com/problems/find-the-closest-palindrome/)) |               给字符串表示的数，求最近的回文数               |           字符串+详细讨论           |
 | [629. K个逆序对数组](#[629. K个逆序对数组](https://leetcode-cn.com/problems/k-inverse-pairs-array/)) |         数字1-n组成的数组，其中逆序对为k的数组的个数         |           动态规划+窗口和           |
 | [730. 统计不同回文子序列](https://leetcode-cn.com/problems/count-different-palindromic-subsequences/) | 不同回文子序列的个数[1458. 两个子序列的最大点积](https://leetcode-cn.com/problems/max-dot-product-of-two-subsequences/) |              动态规划               |
@@ -103,6 +104,7 @@
 | [LCP 14. 切分数组](#[LCP 14. 切分数组](https://leetcode-cn.com/problems/qie-fen-shu-zu/)) |          子数组两端元素最小公约数>1；分割的最少次数          |          质数因子+动态规划          |
 | [17.26. 稀疏相似度](#[面试题 17.26. 稀疏相似度](https://leetcode-cn.com/problems/sparse-similarity-lcci/)) |                          数组的交集                          |           数组元素的哈希            |
 | [17.24. 最大子矩阵](#[面试题 17.24. 最大子矩阵](https://leetcode-cn.com/problems/max-submatrix-lcci/)) | [1074. 元素和为目标值](#[1074. 元素和为目标值的子矩阵数量](https://leetcode-cn.com/problems/number-of-submatrices-that-sum-to-target/))、[862. 和至少为 K ](#[862. 和至少为 K 的最短子数组](https://leetcode-cn.com/problems/shortest-subarray-with-sum-at-least-k/)) |              动态规划               |
+| [17.06. 2出现的次数]([面试题 17.06. 2出现的次数](https://leetcode-cn.com/problems/number-of-2s-in-range-lcci/)) |                      求0-n,2出现的次数                       |                规律                 |
 
 ### 题解
 
@@ -692,8 +694,6 @@ public:
 };
 ```
 
-
-
 #### [48. 旋转图像](https://leetcode-cn.com/problems/rotate-image/)
 
 ```c++
@@ -1241,7 +1241,7 @@ public:
 #### [341. 扁平化嵌套列表迭代器](https://leetcode-cn.com/problems/flatten-nested-list-iterator/)
 
 ```c++
-//更新方法值得学习
+//更新方法值得学习,类比二叉树结构的前序遍历
 class NestedIterator {
 	stack<pair<vector<NestedInteger>::iterator, vector<NestedInteger>::iterator>> st;
 	void update() {
@@ -1446,6 +1446,45 @@ int *findDisappearedNumbers(int *nums, int numsSize, int *returnSize)
     return ans;
 }
 ```
+
+#### [456. 132模式](https://leetcode-cn.com/problems/132-pattern/)
+
+```c++
+//还有一种从后往前的方法。
+class Solution {
+public:
+	bool find132pattern(vector<int>& nums) {
+		int n = nums.size();
+		if (n < 3)return false;
+		vector<pair<int, int>>bound;
+		bound.emplace_back(nums[0], nums[0]);
+		for (int i = 1; i < n; ++i) {
+			int id = 0, S = bound.size();
+			while (id<S) {    //id的查找可以用二分查找。
+				if (nums[i] > bound[id].first) {  //当前区间ai<ak
+					if (nums[i] < bound[id].second) {//ak<aj
+						return true;
+					} else { //当前区间：新的上界，删除后面的
+						bound[id].second = nums[i];
+						bound[id].first = bound.back().first;
+						while (id != --S) {
+							bound.pop_back();
+						}
+					}
+				} else {//尝试下一区间
+					id++;
+					if (id == S) {
+						bound.emplace_back(nums[i], nums[i]);
+					}
+				}
+			}
+		}
+		return false;
+	}
+};
+```
+
+
 
 #### [480. 滑动窗口中位数](https://leetcode-cn.com/problems/sliding-window-median/)
 
@@ -3844,6 +3883,27 @@ public:
 			}
 		}
 		return ans;
+	}
+};
+```
+
+#### [面试题 17.06. 2出现的次数](https://leetcode-cn.com/problems/number-of-2s-in-range-lcci/)
+
+```c++
+//统计规律，统计当每一位为2，各有多少这样的数。最后求和即可
+class Solution {
+public:
+	int numberOf2sInRange(int n) {
+		long cnt = 0, base = 1, k = n;
+		while (k) {
+			int l = k / 10, r = k % 10;
+			if (r > 2) cnt += (l + 1) * base; //右边可以为0到base-1，左边为0到左边的数
+			else if (r <= 2) cnt += l * base; //左边右边可以为0到base-1，左边为0到左边的数-1
+			if (r == 2)cnt += (n % base + 1); //左边为左边数时，右边还可以为0-右边的数
+			base *= 10;
+			k = l;
+		}
+		return cnt;
 	}
 };
 ```
