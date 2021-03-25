@@ -56,7 +56,9 @@ git config --global credential.helper store #保存密码
 ![lifecycle](img/lifecycle.png)
 
 1. 初始化：1）本地：`git init`，2）克隆：`git clone`本地master分支跟踪远程master分支。
-2. **记录操作**：Git 保存的不是文件的变化或者差异，而是一系列不同时刻的 **快照** 。
+
+### 基本操作
+Git 保存的不是文件的变化或者差异，而是一系列不同时刻的 **快照** 。
 
 ```shell
 git status  #查看状态 --short(-s)简短信息
@@ -72,7 +74,9 @@ git rm <file>  			 #记录删除文件的操作  -f强制从暂存中删除  --c
 git mv <name> <newname>  #更改暂存区里文件的名字
 ```
 
-3. **远程操作**：
+### 远程操作
+
+远程，初始化时可用一个**简写名**代替远程的url地址。
 
 ```shell
 git remote #查看已经配置的远程仓库服务器 -v简写与其对应的URL；show <remote> 显示remote远程仓库信息
@@ -80,10 +84,11 @@ git remote add <shortname> <url>  #添加一个新的远程Git仓库
    
 git fetch <remote>            #从remote远程中 拉取所有你还没有的数据 只会将数据下载到你的本地仓库 不合并
 git pull                      #本地分支跟踪了远程分支， 拉取
-git push <remote> <branch>    #将本地分支推送到remote的branch分支
+git push <remote> <branch>    #将本地分支推送到remote的branch分支 -u --set-upstream绑定远程url
 
 git remote rename <remote> <newname> #修改一个远程仓库的简写名
 git remote remove <remote>           #移除远程仓库
+git remote set-url <url>             #设置远程url地址
 ```
 
 ## 分支
