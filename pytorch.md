@@ -329,3 +329,78 @@
 
 
 
+# Torch_geometric
+
+[官方文档](https://pytorch-geometric.readthedocs.io/en/latest/)
+
+## 构造图数据
+
+torch_geometric通过.data.Data描述一个图，
+
++ `data.x`：节点特征矩阵[num_node, feature_dim]。
++ `data.edge_index`：边，由两个节点表示，[2,num_edges]。第一个为source，第二个为target
++ `data.edge_attr`：边的特征表示。
++ `data.y`：目标，输出，如节点分类[num_nodes, num_labels]。
++ `data.pos`：节点位置矩阵。
+
+```python
+edge_index=torch.tensor([[边起始点列表],[边终点列表]],dtype=torch.long)
+#如果边的表示为[num_edges,2],可以使用t()进行转置，由于转置等操作会使数据在内存的分布变得不连续
+#可以继续使用contiguous。将不连续的存储方式变为连续的内存存储方式
+edge_index=torch.tensor([边的列表],dtype=torch.long).t().contiguous() #.t()转置
+x=torch.tensor([每个节点的特征表示列表],dtype=torch.float)。
+data=Data(x=x,edge_index=edge_index)
+```
+
+## message passing network
+
+第k-1层到第k层，节点特征的更新可表示为：
+
+$$
+\mathbf{x}_i^{(k)} = \gamma^{(k)} \left( \mathbf{x}_i^{(k-1)}, \square_{j \in \mathcal{N}(i)} \, \phi^{(k)}\left(\mathbf{x}_i^{(k-1)}, \mathbf{x}_j^{(k-1)},\mathbf{e}_{j,i}\right) \right)
+$$
+
++ Messagepassing：定义aggregation模式。`MessagePassing(aggr="add",flow="source_to_target",node_dim=-2)`；node_dim沿着那个维度传播
++ `MessagePassing.propagate(edge_index,size=None,**kwargs)`：首次调用，开始传播信息message，交互信息不一定限制与对称连接矩阵，也可在二分图bipartite上进行，需设定size=(N,M)。对于两个不同节点集合和下标索引的二分图，可以通过以二元组方式进行传递x=(x_N,x_M)，以区分两者。
++ `MessagePassing.message(...)`：作用类似$\phi$，构造传递给`中心节点i`（接受信息的节点，j邻域节点）的信息（**边的表示为**`(j,i)`,flow="source_to_target"）。可以接收所有传给propagate的参数，即传递propagate的参数可以通过添加`_i,_j`的方式映射到`i节点`和`j节点`。
++ `MessagePassing.update(aggr_out,...)`：作用类似$\gamma$，更新节点embedding，将aggregation的输出作为输入，可以接收传递给propagate的所有参数，然后根据聚合方式更新节点表示。
+
+![image-20210327030005531](img/image-20210327030005531.png)
+
+```python
+import torch as t
+from torch_geometric.nn import MessagePassing
+from torch_geometric.utils import degree
+
+class GCN(MessagePassing):
+    def __init__(self):
+        super(GCN, self).__init__(aggr="add")
+
+    def forward(self, x, edge_index):
+        source, target = edge_index
+        deg_s = degree(target, x.size(0), dtype=x.dtype)#出度，如果是无向图，则入度和出度相等
+        deg_t = degree(target, x.size(0), dtype=x.dtype)#入度
+        deg_sqrt_s = deg_s.pow(-0.5)
+        deg_sqrt_t = deg_t.pow(-0.5)
+        deg_sqrt_s[t.isinf(deg_sqrt_s)] = 1
+        deg_sqrt_t[t.isinf(deg_sqrt_t)] = 1
+        norm = deg_sqrt_s[source] * deg_sqrt_t[target]
+
+        return self.propagate(edge_index, x=x, norm=norm)
+
+    def message(self, x_j, norm):
+        return norm.view(-1, 1) * x_j
+
+
+if __name__ == "__main__":
+    edge_index = t.tensor([[0,5],[0,3],[5,0],[3,0],[1,4],[4,1],[2,4],[4,2]], dtype=t.long)
+    edge_index = edge_index.t().contiguous()
+    x = t.tensor([[1,0,0,0,0,0],[0,1,0,0,0,0],[0,0,1,0,0,0],
+                  [0,0,0,1,0,0],[0,0,0,0,1,0],[0,0,0,0,0,1]], dtype=t.float)
+    mode = GCN()
+    x = mode.forward(x, edge_index)
+    print(x)
+```
+
+![image-20210326233638837](img/image-20210326233638837.png)
+

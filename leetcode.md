@@ -8,7 +8,7 @@
 
 ## 链表
 
-[2. 两数相加](#[2. 两数相加](https://leetcode-cn.com/problems/add-two-numbers/))、[24. 两两交换链表中的节点](#[24. 两两交换链表中的节点](https://leetcode-cn.com/problems/swap-nodes-in-pairs/))、[25. K 个一组翻转链表](#[25. K 个一组翻转链表](https://leetcode-cn.com/problems/reverse-nodes-in-k-group/))、[82. 删除排序链表中的重复元素 II](#[82. 删除排序链表中的重复元素 II](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/))、[92. 反转链表 II](#[92. 反转链表 II](https://leetcode-cn.com/problems/reverse-linked-list-ii/))、
+[2. 两数相加](#[2. 两数相加](https://leetcode-cn.com/problems/add-two-numbers/))、[24. 两两交换链表中的节点](#[24. 两两交换链表中的节点](https://leetcode-cn.com/problems/swap-nodes-in-pairs/))、[25. K 个一组翻转链表](#[25. K 个一组翻转链表](https://leetcode-cn.com/problems/reverse-nodes-in-k-group/))、[82. 删除排序链表中的重复元素 II](#[82. 删除排序链表中的重复元素 II](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/))、[92. 反转链表 II](#[92. 反转链表 II](https://leetcode-cn.com/problems/reverse-linked-list-ii/))、[61. 旋转链表](#[61. 旋转链表](https://leetcode-cn.com/problems/rotate-list/))、
 
 ## 栈
 
@@ -686,29 +686,35 @@ public:
 //可以先水平翻转，再对角线翻转
 ```
 
-#### [82. 删除排序链表中的重复元素 II](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/)
+#### [61. 旋转链表](https://leetcode-cn.com/problems/rotate-list/)
 
 ```c++
+//旋转链表，当k大于链表长度时，操作相当于对其取余后的操作；可以第一次办理时取得最后一个节点，如果K不为len的整数倍，则将节点的next指向头，再次遍历时，只需遍历到第l=len-k%len位置,其下一位置为头，其next指向null,
 class Solution {
 public:
-    ListNode* deleteDuplicates(ListNode* head) {
-        ListNode h(0,head);
-        ListNode* pre=&h;
-        while(head){
-            bool f=false;
-            while(head->next&&head->val==head->next->val){
-                f=true;
-                head=head->next;
-            }
-            if(f)pre->next=head->next;
-            else{
-                pre->next=head;
-                pre=head;
-            }
-            head=head->next;
-        }
-        return h.next;
-    }
+	ListNode* rotateRight(ListNode* head, int k) {
+		if (!head || !head->next || !k)return head;
+		ListNode* p = head, * pre, * h = head;
+		int len = 0;
+		while (p) {//获取长度
+			p = p->next;
+			len++;
+		}
+		cout << len << "," << k << endl;
+		k %= len;
+		if (k == 0)return head;
+		p = head;
+		while (p->next) {//再次遍历，将最后一个节点指向头，倒数第k个指向null,新头为其下一个节点。
+			k--;
+			pre = h;
+			if (k <= 0)h = h->next;
+			p = p->next;
+			//cout << k << "," << pre->val << "," << h->val << "," << p->val << endl;
+		}
+		pre->next = nullptr;
+		p->next = head;
+		return h;
+	}
 };
 ```
 
@@ -752,7 +758,31 @@ public:
 };
 ```
 
+#### [82. 删除排序链表中的重复元素 II](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/)
 
+```c++
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+        ListNode h(0,head);
+        ListNode* pre=&h;
+        while(head){
+            bool f=false;
+            while(head->next&&head->val==head->next->val){
+                f=true;
+                head=head->next;
+            }
+            if(f)pre->next=head->next;
+            else{
+                pre->next=head;
+                pre=head;
+            }
+            head=head->next;
+        }
+        return h.next;
+    }
+};
+```
 
 #### [92. 反转链表 II](https://leetcode-cn.com/problems/reverse-linked-list-ii/)
 
