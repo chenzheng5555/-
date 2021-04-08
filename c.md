@@ -211,14 +211,16 @@ C为数据存储提供了多种存储方式storage class，在storage duration�
 + 各操作系统对文件的处理方式不同，但我们可以利用C的标准I/O库屏蔽掉这些差异。
   + C将输入输出映射为流stream，通过处理流来操作文件（包括I/O设备），打开文件的操作将文件与一个流相关联。
   + 用Ctrl+Z表示文件的结束。或者用数字表明文件大小，这样输入知道何时文件结束；对于标准输入，用EOF（-1）来表示文件结束。对于命令行，Unix用Ctrl+D表示EOF，或者用Ctrl+Z表示，实际中可能会使整个程序结束。
-+ 重定向；1.命令行重定向，`test.exe <in.txt >out.txt`；
++ **重定向**：
+  1. 命令行重定向，`test.exe <in.txt >out.txt`；
+  2. `FILE *freopen(const char *filename, const char *mode, FILE *stream) `：一个新的文件名 **filename** 与给定的打开的流 **stream** 关联，同时关闭流中的旧文件。
 
 ### 文件处理
 
 + c语言可以通过两种方式来处理文件：文本文件（使用二进制表示文本）、二进制文件（使用二进制表示机器语言或数据）。
 
   >+ c自动打开三个文件，标准输入stdin（输入设备），标准输出stdout和标准错误输出（输出设备）；
-  >+ 文件打开`fp=fopen("file","r")`，模式`r只读,w重写,a接着写,b二进制`；`fclose(fp)`文件关闭。
+  >+ 文件打开`fp=fopen("file","r")`，模式`r只读,w重写,a接着写,b二进制`；`fclose(fp)`文件关闭。判断二进制文件指针结束标志：`feof(fp)`
   >+ 对文本文件的读写：`getc(fp)`读取、`fputc(c,pt)`写入。类似操作标准I/O的函数，在对文件的操作函数都能找到对应的，如`fprintf()`、`fscanf()`、`fgets()`、`fputs()`，相比多一个文件指针参数。
   >+ 对文本文件的查找：`fseek(fp,offset,mode)`，mode可以为文件开始SEEK_SET、当前位置SEEK_CUR、文件末尾SEEK_END。`ftell(fp)`告诉当前文件指针的位置，距文件头的byte数。替代函数`fgetpos(fp,&pos)`和`fsetpos(fp,pos)`；
   >+ `ungetc(c,fp)`向文件里回写一个字符。
@@ -265,11 +267,69 @@ C为数据存储提供了多种存储方式storage class，在storage duration�
 
 + _Noreturn函数：`exit()`；断言assert：assert.h，不满足条件，触发断言；`stdarg.h`多参数传递`func(int a,...)`；
 
-### 
+
+
+## 各预处理
+
+**防止头文件重复包含**
+
+```c
+#ifndef TEST_H
+#define TEST_H
+//函数声明
+#endif
+```
 
 
 
+## 静态库lib与动态库dll
+
+**.h提供该库包含的函数（声明），.lib和.dll提供了具体实现**。
+
+- [x] **静态库**：在vs中，**将`项目`->`属性`->`常规属性`->`配置类型`设置为`静态库.lib`。**然后编写函数，最后进行编译，即可得到lib文件，
+
+- [x] **动态库**：导出函数，将配置类型设置为动态库，用于生成dll。使用`__declspec(dllexport)`修饰函数，
+
+```c
+#define _EXPORT  //在生成dll中的头文件添加该宏。使用时不定义该宏
+#ifdef _EXPORT
+	#define DLLAPI __declspec(dllexport) //产生dll时
+#else
+    #define DLLAPI __declspec(dllimport) //使用dll时需要
+#endif
+
+DLLAPI int add(int a,int b);
+```
 
 
 
+## MakeFile
+
+管理和组织代码工程的编译和链接。[参考文章](https://seisman.github.io/how-to-write-makefile/overview.html)
+
+规则包含两个部分，一个是**依赖关系**，一个是**生成目标的方法**。将文件中的第一个目标文件（target）作为最终的目标文件。
+
+```makefile
+#targets : prerequisites ; command
+#    command
+#    ...
+include file1.make
+foo.o: foo.c defs.h       # foo模块
+    cc -c -g foo.c
+#文件过多，可以使用变量代替。
+obj = a.o b.o c.o d.o
+out.o: $(obj)
+	gcc -o out.o $(obj)
+clean: #清除文件，伪标签
+    rm edit $(objects)
+VPATH = src:../headers #冒号分割
+```
+
+**自动推导**，可以自动把.c文件加入到对应的.o文件的依赖中。且编译命令也可省略。
+
+make命令会在当前目录下按顺序找寻文件名为“GNUmakefile”、“makefile”、“Makefile”的文件。指定需要加`-f`
+
+**引用其它的Makefile**：`include <filename>`
+
+文件搜索：默认会在当前目录下搜索文件，可以用使用VPATH进行扩展。
 

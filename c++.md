@@ -219,13 +219,15 @@ template <class T> const T &mymin(const T &a, const T &b) {
 
 # 智能指针
 
-# IO
+# 输入输出IO
 
 + IO类型的对象不可以赋值。iostream（基础）、fstream（文件）、sstream（字符串）；读写IO对象会修改对象，所以不能为const。
 + 可以通过stream的状态iostate获取当前状态。
 + output buffer管理：buffer刷新（程序结束、buffer满、使用endl或unitbuf、相关联的流发生读写）。程序crash，buffer不会刷新。
 + 文件流fstream：`fstream in(file),.open(),.close()`,对象销毁时自动调用close()。
 + 文件模式：in、out、app接着尾写、ate文件尾、trunc截断、binary二进制。
+
+**重定向**，可以利用文件fstream类读入文件数据，然后使用`fstream>>i`读取数据。或者使用freopen("in","r",stdin)重定向标准输入流
 
 # 容器
 
@@ -293,11 +295,7 @@ operator new最后调用malloc ；除了申请的大小，添加了一些head。
 
 
 
-
-
-
-
-# 宏
+# 常见宏
 
 + 生成dll文件`__declspec(dllexport)`：导出函数的头文件里，其他文件导入该dll`__declspec(dllimport)`：在准备使用导出的dll时需要的。
 + 调用协议常用场合：
@@ -314,4 +312,20 @@ operator new最后调用malloc ；除了申请的大小，添加了一些head。
 | DECLTYPE(exp) | 推断类型 |
 |               |          |
 |               |          |
+
+# 预处理
+
+在c++项目中编译c代码
+
+```c++
+#ifdef __cplusplus
+extern "C"{
+#endif
+//c代码 以c进行编译
+#ifdef __cplusplus
+}
+#endif
+```
+
+
 
