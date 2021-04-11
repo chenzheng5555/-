@@ -8,13 +8,13 @@
 
 [面试题 17.14. 最小K个数](#[面试题 17.14. 最小K个数](https://leetcode-cn.com/problems/smallest-k-lcci/))、[5724. 绝对差值和](#[5724. 绝对差值和](https://leetcode-cn.com/problems/minimum-absolute-sum-difference/))、[81. 搜索旋转排序数组 II](#[81. 搜索旋转排序数组 II](https://leetcode-cn.com/problems/search-in-rotated-sorted-array-ii/))、
 
-## 迭代、递归、回溯
+## 迭代、递归、回溯、搜索
 
-[21. 合并两个有序链表](#[21. 合并两个有序链表](https://leetcode-cn.com/problems/merge-two-sorted-lists/))、[485. 最大连续1的个数](#[485. 最大连续1的个数](https://leetcode-cn.com/problems/max-consecutive-ones/))、[456. 132模式](#[456. 132模式](https://leetcode-cn.com/problems/132-pattern/))、[331. 验证二叉树的前序序列化](#[331. 验证二叉树的前序序列化](https://leetcode-cn.com/problems/verify-preorder-serialization-of-a-binary-tree/))、[37. 解数独](#[37. 解数独](https://leetcode-cn.com/problems/sudoku-solver/))、[90. 子集 II](#[90. 子集 II](https://leetcode-cn.com/problems/subsets-ii/))、[22. 括号生成](#[22. 括号生成](https://leetcode-cn.com/problems/generate-parentheses/))、
+[21. 合并两个有序链表](#[21. 合并两个有序链表](https://leetcode-cn.com/problems/merge-two-sorted-lists/))、[485. 最大连续1的个数](#[485. 最大连续1的个数](https://leetcode-cn.com/problems/max-consecutive-ones/))、[456. 132模式](#[456. 132模式](https://leetcode-cn.com/problems/132-pattern/))、[331. 验证二叉树的前序序列化](#[331. 验证二叉树的前序序列化](https://leetcode-cn.com/problems/verify-preorder-serialization-of-a-binary-tree/))、[37. 解数独](#[37. 解数独](https://leetcode-cn.com/problems/sudoku-solver/))、[90. 子集 II](#[90. 子集 II](https://leetcode-cn.com/problems/subsets-ii/))、[22. 括号生成](#[22. 括号生成](https://leetcode-cn.com/problems/generate-parentheses/))、[5728. 最少侧跳次数](#[5728. 最少侧跳次数](https://leetcode-cn.com/problems/minimum-sideway-jumps/))、
 
 ## 链表
 
-[2. 两数相加](#[2. 两数相加](https://leetcode-cn.com/problems/add-two-numbers/))、[24. 两两交换链表中的节点](#[24. 两两交换链表中的节点](https://leetcode-cn.com/problems/swap-nodes-in-pairs/))、[25. K 个一组翻转链表](#[25. K 个一组翻转链表](https://leetcode-cn.com/problems/reverse-nodes-in-k-group/))、[82. 删除排序链表中的重复元素 II](#[82. 删除排序链表中的重复元素 II](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/))、[92. 反转链表 II](#[92. 反转链表 II](https://leetcode-cn.com/problems/reverse-linked-list-ii/))、[61. 旋转链表](#[61. 旋转链表](https://leetcode-cn.com/problems/rotate-list/))、
+[2. 两数相加](#[2. 两数相加](https://leetcode-cn.com/problems/add-two-numbers/))、[24. 两两交换链表中的节点](#[24. 两两交换链表中的节点](https://leetcode-cn.com/problems/swap-nodes-in-pairs/))、[25. K 个一组翻转链表](#[25. K 个一组翻转链表](https://leetcode-cn.com/problems/reverse-nodes-in-k-group/))、[82. 删除排序链表中的重复元素 II](#[82. 删除排序链表中的重复元素 II](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/))、[92. 反转链表 II](#[92. 反转链表 II](https://leetcode-cn.com/problems/reverse-linked-list-ii/))、[61. 旋转链表](#[61. 旋转链表](https://leetcode-cn.com/problems/rotate-list/))、[5727. 找出游戏的获胜者](#[5727. 找出游戏的获胜者](https://leetcode-cn.com/problems/find-the-winner-of-the-circular-game/))、
 
 ## 栈、单调栈（队列）、优先队列
 
@@ -24,9 +24,9 @@
 
 [703. 数据流中的第 K 大元素](#[703. 数据流中的第 K 大元素](https://leetcode-cn.com/problems/kth-largest-element-in-a-stream/))、[1792.最大平均通过率](#[1792. 最大平均通过率](https://leetcode-cn.com/problems/maximum-average-pass-ratio/))、[23. 合并K个升序链表](#[23. 合并K个升序链表](https://leetcode-cn.com/problems/merge-k-sorted-lists/))、[420. 强密码检验器](#[420. 强密码检验器](https://leetcode-cn.com/problems/strong-password-checker/))、[480. 滑动窗口中位数](#[480. 滑动窗口中位数](https://leetcode-cn.com/problems/sliding-window-median/))、
 
-## 数值、规律
+## 数值、规律、问题简化
 
-[119. 杨辉三角 II](#[119. 杨辉三角 II](https://leetcode-cn.com/problems/pascals-triangle-ii/))、[1780. 一个数字是否可以表示成三的幂的和](#[1780. 判断一个数字是否可以表示成三的幂的和](https://leetcode-cn.com/problems/check-if-number-is-a-sum-of-powers-of-three/))、[564. 寻找最近的回文数](#[564. 寻找最近的回文数](https://leetcode-cn.com/problems/find-the-closest-palindrome/))、[面试题 17.06. 2出现的次数]([面试题 17.06. 2出现的次数](https://leetcode-cn.com/problems/number-of-2s-in-range-lcci/))、[995. K 连续位的最小翻转次数](#[995. K 连续位的最小翻转次数](https://leetcode-cn.com/problems/minimum-number-of-k-consecutive-bit-flips/))、[1006. 笨阶乘](#[1006. 笨阶乘](https://leetcode-cn.com/problems/clumsy-factorial/))、[1802. 有界数组中指定下标处的最大值](#[1802. 有界数组中指定下标处的最大值](https://leetcode-cn.com/problems/maximum-value-at-a-given-index-in-a-bounded-array/))、
+[119. 杨辉三角 II](#[119. 杨辉三角 II](https://leetcode-cn.com/problems/pascals-triangle-ii/))、[1780. 一个数字是否可以表示成三的幂的和](#[1780. 判断一个数字是否可以表示成三的幂的和](https://leetcode-cn.com/problems/check-if-number-is-a-sum-of-powers-of-three/))、[564. 寻找最近的回文数](#[564. 寻找最近的回文数](https://leetcode-cn.com/problems/find-the-closest-palindrome/))、[面试题 17.06. 2出现的次数]([面试题 17.06. 2出现的次数](https://leetcode-cn.com/problems/number-of-2s-in-range-lcci/))、[995. K 连续位的最小翻转次数](#[995. K 连续位的最小翻转次数](https://leetcode-cn.com/problems/minimum-number-of-k-consecutive-bit-flips/))、[1006. 笨阶乘](#[1006. 笨阶乘](https://leetcode-cn.com/problems/clumsy-factorial/))、[1802. 有界数组中指定下标处的最大值](#[1802. 有界数组中指定下标处的最大值](https://leetcode-cn.com/problems/maximum-value-at-a-given-index-in-a-bounded-array/))、[73. 矩阵置零](#[73. 矩阵置零](https://leetcode-cn.com/problems/set-matrix-zeroes/))、[906. 超级回文数](#[906. 超级回文数](https://leetcode-cn.com/problems/super-palindromes/))、[LCP 33. 蓄水](#[LCP 33. 蓄水](https://leetcode-cn.com/problems/o8SXZn/))、
 
 ## 哈希、就地哈希
 
@@ -40,15 +40,9 @@
 
 [724. 寻找数组的中心索引](#[724. 寻找数组的中心索引](https://leetcode-cn.com/problems/find-pivot-index/))、
 
-## 延迟、等价问题
-
-[73. 矩阵置零](#[73. 矩阵置零](https://leetcode-cn.com/problems/set-matrix-zeroes/))、[480. 滑动窗口中位数](#[480. 滑动窗口中位数](https://leetcode-cn.com/problems/sliding-window-median/))、[906. 超级回文数](#[906. 超级回文数](https://leetcode-cn.com/problems/super-palindromes/))、
-
 ## 动态规划
 
-[131. 分割回文串](#[131. 分割回文串](https://leetcode-cn.com/problems/palindrome-partitioning/))、[300. 最长递增子序列](#[300. 最长递增子序列](https://leetcode-cn.com/problems/longest-increasing-subsequence/))、[1143. 最长公共子序列](#[1143. 最长公共子序列](https://leetcode-cn.com/problems/longest-common-subsequence/))、[32. 最长有效括号](#[32. 最长有效括号](https://leetcode-cn.com/problems/longest-valid-parentheses/))、[115. 不同的子序列](#[115. 不同的子序列](https://leetcode-cn.com/problems/distinct-subsequences/))、[132. 分割回文串 II](#[132. 分割回文串 II](https://leetcode-cn.com/problems/palindrome-partitioning-ii/))、[354. 俄罗斯套娃信封问题](#[354. 俄罗斯套娃信封问题](https://leetcode-cn.com/problems/russian-doll-envelopes/))、[629. K个逆序对数组](#[629. K个逆序对数组](https://leetcode-cn.com/problems/k-inverse-pairs-array/))、[730. 统计不同回文子序列](https://leetcode-cn.com/problems/count-different-palindromic-subsequences/)、[940. 不同的子序列 II](#[940. 不同的子序列 II](https://leetcode-cn.com/problems/distinct-subsequences-ii/))、[1458. 两个子序列的最大点积](https://leetcode-cn.com/problems/max-dot-product-of-two-subsequences/)、[LCP 14. 切分数组](#[LCP 14. 切分数组](https://leetcode-cn.com/problems/qie-fen-shu-zu/))、[面试题 17.24. 最大子矩阵](#[面试题 17.24. 最大子矩阵](https://leetcode-cn.com/problems/max-submatrix-lcci/))、
-
-
+[131. 分割回文串](#[131. 分割回文串](https://leetcode-cn.com/problems/palindrome-partitioning/))、[300. 最长递增子序列](#[300. 最长递增子序列](https://leetcode-cn.com/problems/longest-increasing-subsequence/))、[1143. 最长公共子序列](#[1143. 最长公共子序列](https://leetcode-cn.com/problems/longest-common-subsequence/))、[32. 最长有效括号](#[32. 最长有效括号](https://leetcode-cn.com/problems/longest-valid-parentheses/))、[115. 不同的子序列](#[115. 不同的子序列](https://leetcode-cn.com/problems/distinct-subsequences/))、[132. 分割回文串 II](#[132. 分割回文串 II](https://leetcode-cn.com/problems/palindrome-partitioning-ii/))、[354. 俄罗斯套娃信封问题](#[354. 俄罗斯套娃信封问题](https://leetcode-cn.com/problems/russian-doll-envelopes/))、[629. K个逆序对数组](#[629. K个逆序对数组](https://leetcode-cn.com/problems/k-inverse-pairs-array/))、[730. 统计不同回文子序列](https://leetcode-cn.com/problems/count-different-palindromic-subsequences/)、[940. 不同的子序列 II](#[940. 不同的子序列 II](https://leetcode-cn.com/problems/distinct-subsequences-ii/))、[1458. 两个子序列的最大点积](https://leetcode-cn.com/problems/max-dot-product-of-two-subsequences/)、[LCP 14. 切分数组](#[LCP 14. 切分数组](https://leetcode-cn.com/problems/qie-fen-shu-zu/))、[面试题 17.24. 最大子矩阵](#[面试题 17.24. 最大子矩阵](https://leetcode-cn.com/problems/max-submatrix-lcci/))、[264. 丑数 II](#[264. 丑数 II](https://leetcode-cn.com/problems/ugly-number-ii/))、
 
 ## 分治
 
@@ -792,6 +786,8 @@ public:
 
 #### [81. 搜索旋转排序数组 II](https://leetcode-cn.com/problems/search-in-rotated-sorted-array-ii/)
 
+类似的题还有：[154. 寻找旋转排序数组中的最小值 II](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array-ii/)、[153. 寻找旋转排序数组中的最小值](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/)、[33. 搜索旋转排序数组](https://leetcode-cn.com/problems/search-in-rotated-sorted-array/)、
+
 ```c++
 //可以通过nums[l]、nums[mid]、nums[r]三者不相等时，可以通过三者的关系进行二分，相等时，则无法判断
 class Solution {
@@ -1414,6 +1410,63 @@ public:
     }
 };
 ```
+
+#### [264. 丑数 II](https://leetcode-cn.com/problems/ugly-number-ii/)
+
+```c++
+//如果x是丑数，则2x,3x,5x也是丑数，求得的丑数是递增的，则可用三个指针指向之前的丑数，这三个值分别乘以2，3，5，取三者的最小值作为下一个丑数。
+class Solution {
+public:
+	int nthUglyNumber(int n) {
+		if (n == 1)return 1;
+		vector<int>ans(n);
+		ans[0] = 1;
+		int a = 0, b = 0, c = 0;//三个指针
+		int va = 1, vb = 1, vc = 1;//三个指针的值
+		int preMin = 1, i = 1;
+		while (--n) {
+			if (preMin == va) {//当最小值为为va，更新指针，后移一位
+				while ((va = 2 * ans[a++]) && va < preMin);//该值已经出现过，取下一位
+			}
+			if (preMin == vb) {
+				while ((vb = 3 * ans[b++]) && vb < preMin);
+			}
+			if (preMin == vc) {
+				while ((vc = 5 * ans[c++]) && vc < preMin);
+			}
+			preMin = min(min(va, vb), vc);
+			ans[i++] = preMin;
+		}
+		return preMin;
+	}
+};
+//没必要将判断取的哪一位 放在下一轮。
+class Solution {
+    public int nthUglyNumber(int n) {
+        int[] dp = new int[n + 1];
+        dp[1] = 1;
+        int p2 = 1, p3 = 1, p5 = 1;
+        for (int i = 2; i <= n; i++) {
+            int num2 = dp[p2] * 2, num3 = dp[p3] * 3, num5 = dp[p5] * 5;
+            dp[i] = Math.min(Math.min(num2, num3), num5);
+            if (dp[i] == num2) {
+                p2++;
+            }
+            if (dp[i] == num3) {
+                p3++;
+            }
+            if (dp[i] == num5) {
+                p5++;
+            }
+        }
+        return dp[n];
+    }
+}
+
+//还可以用最小堆，不断将丑数加入，并弹出最小的丑数。
+```
+
+
 
 #### [300. 最长递增子序列](https://leetcode-cn.com/problems/longest-increasing-subsequence/)
 
@@ -4176,6 +4229,71 @@ public:
 };
 ```
 
+#### [5727. 找出游戏的获胜者](https://leetcode-cn.com/problems/find-the-winner-of-the-circular-game/)
+
+```c++
+//模拟、循环、双指针。
+class Solution {
+public:
+	int findTheWinner(int n, int k) {
+		vector<int>next(n + 1, 1);//建立链表
+		for (int i = 1; i < n; ++i) {
+			next[i] = i + 1;
+		}
+		int start = 1, off, pre = n;
+		while (n > 1) {//剩余人数大于1
+			off = (k - 1) % n;//省略掉整圈数，
+			while (off-- > 0) {//移动
+				pre = start;
+				start = next[start];
+			}
+			cout << start << ",";
+			next[pre] = next[start];
+			start = next[start];
+			n--;
+		}
+		return start;
+	}
+};
+```
+
+
+
+#### [5728. 最少侧跳次数](https://leetcode-cn.com/problems/minimum-sideway-jumps/)
+
+```c++
+//记忆搜索
+class Solution {
+	vector<vector<int>>mem;
+	int dfs(vector<int>& o, int k, int side, int n) {
+		if (mem[side - 1][k] != -1)return mem[side - 1][k];
+		int s = k;
+		while (k < n && (o[k] == 0 || o[k] != side))k++;
+
+		int minC = INT_MAX;
+		if (k != n) {//未达到终点
+			k--;//障碍前的位置
+			for (int i = 1; i < 4; ++i) {
+				if (i == side || o[k] == i)continue;//跳到的赛道有障碍
+				int cnt = dfs(o, k + 1, i, n) + 1;//跳到另一个赛道 位置加一与否都可以
+				minC = min(minC, cnt);
+			}
+		}
+		else minC = 0;
+		for (int i = s; i < k; ++i) mem[side - 1][i] = minC;//存储该通道到终点的最小侧跳次数
+
+		return minC;
+	}
+public:
+	int minSideJumps(vector<int>& obstacles) {
+		int n = obstacles.size() - 1;
+		mem.assign(3, vector<int>(n, -1));
+		return dfs(obstacles, 0, 2, n);
+
+	}
+};
+```
+
 
 
 #### [LCP 14. 切分数组](https://leetcode-cn.com/problems/qie-fen-shu-zu/)
@@ -4257,6 +4375,81 @@ public:
 	}
 };
 ```
+
+#### [LCP 33. 蓄水](https://leetcode-cn.com/problems/o8SXZn/)
+
+```c++
+//讨论时，尽量往简单的情况考虑。
+vector<int>need;
+class cmp {
+public:
+	bool operator()(const int i, const int j) {
+		return need[i] < need[j];
+	}
+};
+class Solution {
+public:
+	int storeWater(vector<int>& bucket, vector<int>& vat) {
+		int n = vat.size(), ans = 0;
+		need.assign(n, 0);
+		priority_queue<int, vector<int>, cmp>que;//需要倒水次数 最大的下标
+		for (int i = 0; i < n; ++i) {
+			if (bucket[i] == 0 && vat[i])ans++, bucket[i]++;
+			if (bucket[i] == 0 || vat[i] == 0)continue;
+			need[i] = (vat[i] + bucket[i] - 1) / bucket[i];
+			que.push(i);
+		}
+		if (que.empty())return ans;
+
+		int maxCnt = need[que.top()];
+		int minAns = ans + maxCnt;
+		while (maxCnt > 1) {
+			maxCnt = need[que.top()];
+			//cout<<maxCnt<<","<<minAns<<"),";
+			int cnt = 0, j;
+			vector<int>index;
+			int M = 0;//桶加一后，需要倒水次数 最大值
+			while (!que.empty() && maxCnt == need[que.top()]) {
+				j = que.top();
+				index.push_back(j);
+				bucket[j]++, cnt++;
+				need[j] = (vat[j] + bucket[j] - 1) / bucket[j];//桶加一后的倒水次数
+				M = max(M, need[j]);
+				que.pop();
+			}
+			int m = que.empty() ? M : max(M, need[que.top()]);
+			m = min(m + cnt, maxCnt);
+			minAns = min(minAns, ans + m);//
+			for (auto x : index) {
+				que.push(x);
+			}
+			ans += cnt;
+		}
+		return minAns;
+	}
+};
+//直接遍历所有的情况。别人竞赛时写的代码。
+class Solution {
+public:
+    int storeWater(vector<int>& b, vector<int>& v) {
+        int n = b.size();
+        if (count(v.begin(), v.end(), 0) == n){
+            return 0;
+        }
+        
+        int ans = 100000000;
+        for (int i = 1; i <= 10000; ++i){//倒水次数
+            int s = i;
+            for (int j = 0; j < n; ++j)
+                s += max(0, (v[j] + i - 1) / i - b[j]);//倒水次数为i时需要的最小高度、减去本来的高度，为扩容次数。
+            ans = min(ans, s);
+        }
+        return ans;
+    }
+};
+```
+
+
 
 #### [面试题 17.06. 2出现的次数](https://leetcode-cn.com/problems/number-of-2s-in-range-lcci/)
 
