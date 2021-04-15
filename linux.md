@@ -41,6 +41,7 @@ vim 键盘图[(来源菜鸟教程)](https://www.runoob.com/linux/linux-vim.html)
 > ---
 >
 > > + ` q ` 退出，` w ` 保存
+> > + `:set number`设置行号
 
 
 

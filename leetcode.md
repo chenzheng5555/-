@@ -26,7 +26,7 @@
 
 ## 数值、规律、问题简化
 
-[119. 杨辉三角 II](#[119. 杨辉三角 II](https://leetcode-cn.com/problems/pascals-triangle-ii/))、[1780. 一个数字是否可以表示成三的幂的和](#[1780. 判断一个数字是否可以表示成三的幂的和](https://leetcode-cn.com/problems/check-if-number-is-a-sum-of-powers-of-three/))、[564. 寻找最近的回文数](#[564. 寻找最近的回文数](https://leetcode-cn.com/problems/find-the-closest-palindrome/))、[面试题 17.06. 2出现的次数]([面试题 17.06. 2出现的次数](https://leetcode-cn.com/problems/number-of-2s-in-range-lcci/))、[995. K 连续位的最小翻转次数](#[995. K 连续位的最小翻转次数](https://leetcode-cn.com/problems/minimum-number-of-k-consecutive-bit-flips/))、[1006. 笨阶乘](#[1006. 笨阶乘](https://leetcode-cn.com/problems/clumsy-factorial/))、[1802. 有界数组中指定下标处的最大值](#[1802. 有界数组中指定下标处的最大值](https://leetcode-cn.com/problems/maximum-value-at-a-given-index-in-a-bounded-array/))、[73. 矩阵置零](#[73. 矩阵置零](https://leetcode-cn.com/problems/set-matrix-zeroes/))、[906. 超级回文数](#[906. 超级回文数](https://leetcode-cn.com/problems/super-palindromes/))、[LCP 33. 蓄水](#[LCP 33. 蓄水](https://leetcode-cn.com/problems/o8SXZn/))、
+[6. Z 字形变换](#[6. Z 字形变换](https://leetcode-cn.com/problems/zigzag-conversion/))、[119. 杨辉三角 II](#[119. 杨辉三角 II](https://leetcode-cn.com/problems/pascals-triangle-ii/))、[1780. 一个数字是否可以表示成三的幂的和](#[1780. 判断一个数字是否可以表示成三的幂的和](https://leetcode-cn.com/problems/check-if-number-is-a-sum-of-powers-of-three/))、[564. 寻找最近的回文数](#[564. 寻找最近的回文数](https://leetcode-cn.com/problems/find-the-closest-palindrome/))、[面试题 17.06. 2出现的次数]([面试题 17.06. 2出现的次数](https://leetcode-cn.com/problems/number-of-2s-in-range-lcci/))、[995. K 连续位的最小翻转次数](#[995. K 连续位的最小翻转次数](https://leetcode-cn.com/problems/minimum-number-of-k-consecutive-bit-flips/))、[1006. 笨阶乘](#[1006. 笨阶乘](https://leetcode-cn.com/problems/clumsy-factorial/))、[1802. 有界数组中指定下标处的最大值](#[1802. 有界数组中指定下标处的最大值](https://leetcode-cn.com/problems/maximum-value-at-a-given-index-in-a-bounded-array/))、[73. 矩阵置零](#[73. 矩阵置零](https://leetcode-cn.com/problems/set-matrix-zeroes/))、[906. 超级回文数](#[906. 超级回文数](https://leetcode-cn.com/problems/super-palindromes/))、[LCP 33. 蓄水](#[LCP 33. 蓄水](https://leetcode-cn.com/problems/o8SXZn/))、
 
 ## 哈希、就地哈希
 
@@ -42,7 +42,7 @@
 
 ## 动态规划
 
-[131. 分割回文串](#[131. 分割回文串](https://leetcode-cn.com/problems/palindrome-partitioning/))、[300. 最长递增子序列](#[300. 最长递增子序列](https://leetcode-cn.com/problems/longest-increasing-subsequence/))、[1143. 最长公共子序列](#[1143. 最长公共子序列](https://leetcode-cn.com/problems/longest-common-subsequence/))、[32. 最长有效括号](#[32. 最长有效括号](https://leetcode-cn.com/problems/longest-valid-parentheses/))、[115. 不同的子序列](#[115. 不同的子序列](https://leetcode-cn.com/problems/distinct-subsequences/))、[132. 分割回文串 II](#[132. 分割回文串 II](https://leetcode-cn.com/problems/palindrome-partitioning-ii/))、[354. 俄罗斯套娃信封问题](#[354. 俄罗斯套娃信封问题](https://leetcode-cn.com/problems/russian-doll-envelopes/))、[629. K个逆序对数组](#[629. K个逆序对数组](https://leetcode-cn.com/problems/k-inverse-pairs-array/))、[730. 统计不同回文子序列](https://leetcode-cn.com/problems/count-different-palindromic-subsequences/)、[940. 不同的子序列 II](#[940. 不同的子序列 II](https://leetcode-cn.com/problems/distinct-subsequences-ii/))、[1458. 两个子序列的最大点积](https://leetcode-cn.com/problems/max-dot-product-of-two-subsequences/)、[LCP 14. 切分数组](#[LCP 14. 切分数组](https://leetcode-cn.com/problems/qie-fen-shu-zu/))、[面试题 17.24. 最大子矩阵](#[面试题 17.24. 最大子矩阵](https://leetcode-cn.com/problems/max-submatrix-lcci/))、[264. 丑数 II](#[264. 丑数 II](https://leetcode-cn.com/problems/ugly-number-ii/))、
+[131. 分割回文串](#[131. 分割回文串](https://leetcode-cn.com/problems/palindrome-partitioning/))、[300. 最长递增子序列](#[300. 最长递增子序列](https://leetcode-cn.com/problems/longest-increasing-subsequence/))、[1143. 最长公共子序列](#[1143. 最长公共子序列](https://leetcode-cn.com/problems/longest-common-subsequence/))、[32. 最长有效括号](#[32. 最长有效括号](https://leetcode-cn.com/problems/longest-valid-parentheses/))、[115. 不同的子序列](#[115. 不同的子序列](https://leetcode-cn.com/problems/distinct-subsequences/))、[132. 分割回文串 II](#[132. 分割回文串 II](https://leetcode-cn.com/problems/palindrome-partitioning-ii/))、[354. 俄罗斯套娃信封问题](#[354. 俄罗斯套娃信封问题](https://leetcode-cn.com/problems/russian-doll-envelopes/))、[629. K个逆序对数组](#[629. K个逆序对数组](https://leetcode-cn.com/problems/k-inverse-pairs-array/))、[730. 统计不同回文子序列](https://leetcode-cn.com/problems/count-different-palindromic-subsequences/)、[940. 不同的子序列 II](#[940. 不同的子序列 II](https://leetcode-cn.com/problems/distinct-subsequences-ii/))、[1458. 两个子序列的最大点积](https://leetcode-cn.com/problems/max-dot-product-of-two-subsequences/)、[LCP 14. 切分数组](#[LCP 14. 切分数组](https://leetcode-cn.com/problems/qie-fen-shu-zu/))、[面试题 17.24. 最大子矩阵](#[面试题 17.24. 最大子矩阵](https://leetcode-cn.com/problems/max-submatrix-lcci/))、[264. 丑数 II](#[264. 丑数 II](https://leetcode-cn.com/problems/ugly-number-ii/))、[5. 最长回文子串](#[5. 最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/))、[10. 正则表达式匹配](#[10. 正则表达式匹配](https://leetcode-cn.com/problems/regular-expression-matching/))、
 
 ## 分治
 
@@ -62,7 +62,7 @@
 
 ## 字符串
 
-[1044. 最长重复子串](#[1044. 最长重复子串](https://leetcode-cn.com/problems/longest-duplicate-substring/))、[1178. 猜字谜](#[1178. 猜字谜](https://leetcode-cn.com/problems/number-of-valid-words-for-each-puzzle/))、
+[1044. 最长重复子串](#[1044. 最长重复子串](https://leetcode-cn.com/problems/longest-duplicate-substring/))、[1178. 猜字谜](#[1178. 猜字谜](https://leetcode-cn.com/problems/number-of-valid-words-for-each-puzzle/))、[8. 字符串转换整数 (atoi)](#[8. 字符串转换整数 (atoi)](https://leetcode-cn.com/problems/string-to-integer-atoi/))、
 
 ## 范围操作
 
@@ -223,6 +223,155 @@ public:
 };
 //该题为目标为找出正确的划分线。可以选择在小的数组进行查找划分的位置，
 ```
+
+#### [5. 最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/)
+
+```c++
+class Solution {
+public:
+	string longestPalindrome(string s) {
+		string str = "@#";
+		for (auto c : s) {
+			str += c;
+			str += '#';
+		}
+		str += '$';
+		int n = str.size();
+		vector<int>p(n, 1);
+		int id = 1, mx = 1;
+		int maxLen = 0, start = 0;
+		for (int i = 1; i < n; ++i) {
+			if (i < mx) {//检查是i是否在mx范围内。
+				p[i] = min(p[2 * id - i], mx - i);
+			}
+			while (str[i - p[i]] == str[i + p[i]])p[i]++;//继续扩展
+			if (p[i] > maxLen) {//更新最大长度
+				maxLen = p[i];
+                //因为最长回文子串的边界一定是添加的字符'#'.即原加在原字符前的#,k/2正好为之前的位置。
+				start = (i - p[i] + 1) / 2;
+			}
+			if (mx < i + p[i]) {//更新最右边界
+				mx = i + p[i], id = i;
+			}
+		}
+		return s.substr(start, maxLen - 1);
+	}
+};
+```
+
+#### [6. Z 字形变换](https://leetcode-cn.com/problems/zigzag-conversion/)
+
+```c++
+class Solution {
+public:
+	string convert(string s, int numRows) {
+		int n = s.size();
+		if (numRows == 1 || n < 3)return s;
+		string ans;
+		int row = 0;
+		int stepL, stepR, start;
+		while (row < numRows) {
+			stepL = 2 * (numRows - row - 1);//左边到中间的距离
+			stepR = 2 * row;//中间到右边的距离
+			start = row;
+			while (start < n) {
+				ans += s[start];
+				start += stepL;
+				if (stepR) {
+					if (start < n && stepL)ans += s[start];//不越界、不重复取左边那个值
+					start += stepR;
+				}
+			}
+			row++;
+		}
+		return ans;
+	}
+};
+```
+
+#### [8. 字符串转换整数 (atoi)](https://leetcode-cn.com/problems/string-to-integer-atoi/)
+
+```c++
+class Solution {
+public:
+	int myAtoi(string s) {
+		int n = s.size(), i = 0;
+		while (i < n && s[i] == ' ')i++;//去空格
+		if (i == n)return 0;
+		long sign = 1, num = 0;
+        
+		if (s[i] == '+')sign = 1, i++;//确定符号
+		else if (s[i] == '-')sign = -1, i++;
+
+		while (i < n && s[i] >= '0' && s[i] <= '9') {//求数字部分
+			num = num * 10 + (s[i] - '0');
+			if (num >= INT_MAX && sign == 1) {
+				num = INT_MAX;
+				break;
+			}
+			if (num >= (1LL << 31) && sign == -1) {
+				num = (1LL << 31);
+				cout << num;
+				break;
+			}
+			i++;
+		}
+		return sign * num;
+
+	}
+};
+```
+
+#### [10. 正则表达式匹配](https://leetcode-cn.com/problems/regular-expression-matching/)
+
+```c++
+/* Leetcode答案
+ * f[i][j]在 s[i]与当前p[j]('p[j-1]*')匹配成功后，匹配成功与否取决与:
+ * 1. 如果p[j]!='*',	取决于f[i-1][j-1]
+ * 2. 如果p[j]=='*':
+ * 	  1. 相当于多次使用'p[j-1]*',取决于f[i][j-2]
+ *    2. 取0次，取决于f[i-1][j]
+ */
+class Solution {
+public:
+    bool isMatch(string s, string p) {
+        int m = s.size();
+        int n = p.size();
+
+        auto matches = [&](int i, int j) {
+            if (i == 0) {
+                return false;
+            }
+            if (p[j - 1] == '.') {
+                return true;
+            }
+            return s[i - 1] == p[j - 1];
+        };
+
+        vector<vector<int>> f(m + 1, vector<int>(n + 1));//f[i][j] s的前i个字符和p的前j个字符 匹配情况
+        f[0][0] = true;	//起始状态 匹配
+        for (int i = 0; i <= m; ++i) {
+            for (int j = 1; j <= n; ++j) {
+                if (p[j - 1] == '*') {//p[j-1]字符可为任意个 
+                    f[i][j] |= f[i][j - 2];//取p[j-1]个数为0，
+                    if (matches(i, j - 1)) {//在s[i-1]和p[j]匹配的情况下，继续取p[j-1]来匹配
+                        f[i][j] |= f[i - 1][j];
+                    }
+                }
+                else {//p[j]的个数为一个
+                    if (matches(i, j)) {//匹配则看 s[i-1]和p[j-1]
+                        f[i][j] |= f[i - 1][j - 1];
+                    }
+                }
+            }
+        }
+        return f[m][n];
+    }
+};
+
+```
+
+
 
 #### [20. 有效的括号](https://leetcode-cn.com/problems/valid-parentheses/)
 
@@ -4257,8 +4406,6 @@ public:
 };
 ```
 
-
-
 #### [5728. 最少侧跳次数](https://leetcode-cn.com/problems/minimum-sideway-jumps/)
 
 ```c++
@@ -4292,6 +4439,8 @@ public:
 
 	}
 };
+//还可以使用贪心算法(跳到下一个障碍最远的跑道)、
+//dp[i][j]到j位置的i跑道 最小侧跳次数
 ```
 
 
