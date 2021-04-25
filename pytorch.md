@@ -2,98 +2,9 @@
 
 [官方文档](https://pytorch.org/docs/stable/index.html)、[中文翻译](https://apachecn.gitee.io/pytorch-doc-zh/#/)、
 
-## numpy操作
-
-[中文文档](https://www.numpy.org.cn/reference/)
-
-### 创建数组
-
-| 创建数组                                                     | 描述                                                        |
-| ------------------------------------------------------------ | ----------------------------------------------------------- |
-| [array](https://numpy.org/devdocs/reference/generated/numpy.array.html#numpy.array)(object[, dtype, copy, order, subok, ndmin]) | 创建一个数组。                                              |
-| [eye](https://numpy.org/devdocs/reference/generated/numpy.eye.html#numpy.eye)(N[, M, k, dtype, order]) | 返回一个二维数组，对角线上1，其他地方为0。                  |
-| [full](https://numpy.org/devdocs/reference/generated/numpy.full.html#numpy.full)(shape, fill_value[, dtype, order]) | 返回给定形状和类型的新数组，并用fill_value填充。ones，zeros |
-| [full_like](https://numpy.org/devdocs/reference/generated/numpy.full_like.html#numpy.full_like)(a, fill_value[, dtype, order, …]) | 返回形状和类型与给定数组相同的完整数组。                    |
-| [arange](https://numpy.org/devdocs/reference/generated/numpy.arange.html#numpy.arange)([start,] stop[, step,][, dtype]) | 返回给定间隔内的均匀间隔的值。                              |
-| [linspace](https://numpy.org/devdocs/reference/generated/numpy.linspace.html#numpy.linspace)(start, stop[, num, endpoint, …]) | 返回指定间隔内的等间隔数字。                                |
-|                                                              |                                                             |
-
-### 属性
-
-| 属性                                                         | 描述             |
-| ------------------------------------------------------------ | ---------------- |
-| [ndarray.T](https://numpy.org/devdocs/reference/generated/numpy.ndarray.T.html#numpy.ndarray.T) | 转置数组。       |
-| [ndarray.shape](https://numpy.org/devdocs/reference/generated/numpy.ndarray.shape.html#numpy.ndarray.shape) | 数组维度的元组。 |
-| [ndarray.ndim](https://numpy.org/devdocs/reference/generated/numpy.ndarray.ndim.html#numpy.ndarray.ndim) | 数组维数。       |
-| [ndarray.size](https://numpy.org/devdocs/reference/generated/numpy.ndarray.size.html#numpy.ndarray.size) | 数组中的元素数。 |
-
-### 拼接数组
-
-| 方法                                                         | 描述                                   |
-| ------------------------------------------------------------ | -------------------------------------- |
-| [concatenate](https://numpy.org/devdocs/reference/generated/numpy.concatenate.html#numpy.concatenate)((a1, a2, …) | 沿现有轴连接一系列数组。               |
-| [stack](https://numpy.org/devdocs/reference/generated/numpy.stack.html#numpy.stack)(arrays[, axis, out]) | 沿新轴连接一系列数组。                 |
-| [column_stack](https://numpy.org/devdocs/reference/generated/numpy.column_stack.html#numpy.column_stack)(tup) | 将一维数组作为列堆叠到二维数组中。     |
-| [dstack](https://numpy.org/devdocs/reference/generated/numpy.dstack.html#numpy.dstack)(tup) | 沿深度方向（沿第三轴）按顺序堆叠数组。 |
-| [hstack](https://numpy.org/devdocs/reference/generated/numpy.hstack.html#numpy.hstack)(tup) | 水平（按列）顺序堆叠数组。             |
-| [vstack](https://numpy.org/devdocs/reference/generated/numpy.vstack.html#numpy.vstack)(tup) | 垂直（行）按顺序堆叠数组。             |
-| [block](https://numpy.org/devdocs/reference/generated/numpy.block.html#numpy.block)(arrays) | 从块的嵌套列表中组装一个nd数组。       |
-
-### 切分数组
-
-| 方法                                                         | 描述                                     |
-| ------------------------------------------------------------ | ---------------------------------------- |
-| [split](https://numpy.org/devdocs/reference/generated/numpy.split.html#numpy.split)(ary, indices_or_sections[, axis]) | 将数组拆分为多个子数组，作为ary的视图。  |
-| [array_split](https://numpy.org/devdocs/reference/generated/numpy.array_split.html#numpy.array_split)(ary, indices_or_sections[, axis]) | 将一个数组拆分为多个子数组。             |
-| [dsplit](https://numpy.org/devdocs/reference/generated/numpy.dsplit.html#numpy.dsplit)(ary, indices_or_sections) | 沿第3轴（深度）将数组拆分为多个子数组。  |
-| [hsplit](https://numpy.org/devdocs/reference/generated/numpy.hsplit.html#numpy.hsplit)(ary, indices_or_sections) | 水平（按列）将一个数组拆分为多个子数组。 |
-| [vsplit](https://numpy.org/devdocs/reference/generated/numpy.vsplit.html#numpy.vsplit)(ary, indices_or_sections) | 垂直（行）将数组拆分为多个子数组。       |
-
-### 增删
-
-| 方法                                                         | 描述                                             |
-| ------------------------------------------------------------ | ------------------------------------------------ |
-| [delete](https://numpy.org/devdocs/reference/generated/numpy.delete.html#numpy.delete)(arr, obj[, axis]) | 返回一个新的数组，该数组具有沿删除的轴的子数组。 |
-| [insert](https://numpy.org/devdocs/reference/generated/numpy.insert.html#numpy.insert)(arr, obj, values[, axis]) | 沿给定轴在给定索引之前插入值。                   |
-| [append](https://numpy.org/devdocs/reference/generated/numpy.append.html#numpy.append)(arr, values[, axis]) | 将值附加到数组的末尾。                           |
-| [resize](https://numpy.org/devdocs/reference/generated/numpy.resize.html#numpy.resize)(a, new_shape) | 返回具有指定形状的新数组。                       |
-| [trim_zeros](https://numpy.org/devdocs/reference/generated/numpy.trim_zeros.html#numpy.trim_zeros)s(filt[, trim]) | 修剪一维数组或序列中的前导和/或尾随零。          |
-| [unique](https://numpy.org/devdocs/reference/generated/numpy.unique.html#numpy.unique)(ar[, return_index, return_inverse, …]) | 查找数组的唯一元素。                             |
-
-### 改变形状
-
-| 方法                                                         | 描述                                   |
-| ------------------------------------------------------------ | -------------------------------------- |
-| [reshape](https://numpy.org/devdocs/reference/generated/numpy.reshape.html#numpy.reshape)(a, newshape[, order]) | 在不更改数据的情况下为数组赋予新的形状 |
-| [ravel](https://numpy.org/devdocs/reference/generated/numpy.ravel.html#numpy.ravel)(a[, order]) | 返回一个连续的扁平数组                 |
-| [ndarray.flatten](https://numpy.org/devdocs/reference/generated/numpy.ndarray.flatten.html#numpy.ndarray.flatten)([order]) | 返回折叠成一维的数组副本               |
-| [squeeze](https://numpy.org/devdocs/reference/generated/numpy.squeeze.html#numpy.squeeze)(a[, axis]) | 从数组形状中删除一维条目               |
-| [expand_dims](https://numpy.org/devdocs/reference/generated/numpy.expand_dims.html#numpy.expand_dims)(a, axis) | 扩展数组的形状。                       |
-| [swapaxes](https://numpy.org/devdocs/reference/generated/numpy.swapaxes.html#numpy.swapaxes)(a, axis1, axis2) | 互换数组的两个轴。                     |
-| [transpose](https://numpy.org/devdocs/reference/generated/numpy.transpose.html#numpy.transpose)(a[, axes]) | 排列数组的尺寸                         |
-| [repeat](https://numpy.org/devdocs/reference/generated/numpy.repeat.html#numpy.repeat)(a, repeats[, axis]) | 重复数组的元素                         |
-
-### 索引切片
-
-一般的切片都支持，data[index_list]
-
-| 方法                                                         | 描述                                                         |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [choose](https://numpy.org/devdocs/reference/generated/numpy.choose.html#numpy.choose)(a, choices[, out, mode]) | 从索引数组和一组数组中构造一个数组以供选择。                 |
-| [take](https://numpy.org/devdocs/reference/generated/numpy.take.html#numpy.take)(a, indices[, axis, out, mode]) | 沿轴从数组中获取元素。                                       |
-| [compress](https://numpy.org/devdocs/reference/generated/numpy.compress.html#numpy.compress)(condition, a[, axis, out]) | 沿给定轴返回数组的[选定](https://numpy.org/devdocs/reference/generated/numpy.select.html#numpy.select)切片。 |
-
-### 广播
-
-整个NumPy使用广播来决定如何处理不同形状的数组。
 
 
-
-## tensor操作
-
-
-
-# 深度学习框架PyTorch：入门与实践
+# 《深度学习框架PyTorch：入门与实践》
 
 项目地址：https://github.com/chenyuntc/pytorch-book
 
@@ -440,21 +351,60 @@ writer.add_scalar('Loss/train', np.random.random(), n_iter)
 writer.close()
 ```
 
-函数原型
+`SummaryWriter类`是数据日志的main入口，初始化：
 
-- [ ] `torch.utils.tensorboard.writer.SummaryWriter`(*log_dir=None*, *comment=''*, *purge_step=None*, *max_queue=10*, *flush_secs=120*, *filename_suffix=''*)
+```python
+torch.utils.tensorboard.writer.SummaryWriter(log_dir=None, comment='', purge_step=None, max_queue=10, flush_secs=120, filename_suffix='')
+'''
+log_dir: 		存储路径
+comment: 		log_dir的后缀，提供log_dir后失效cx
+purge_step: 	日志记录失败时，重新开始训练，该步骤以后的都会覆盖
+max_queue:		挂起事件数量 10
+flush_secs: 	多少秒刷新一下挂起事件 120s
+filename_suffix:所有事件后的后缀名
+'''
+```
 
-- [ ] `.add_scalar`(*tag*, *scalar_value*, *global_step=None*, *walltime=None*)
+方法：
 
-  `.add_scalars`(*main_tag*, *tag_scalar_dict*, *global_step=None*, *walltime=None*)
+```python
+.add_scalar(tag, scalar_value, global_step=None, walltime=None)
+.add_scalars(main_tag, tag_scalar_dict, global_step=None, walltime=None)
+'''
+tag、main_tag:					名称
+scalar_value、tag_scalar_dict:	要存储的值、字典
+global_step:					总的迭代步数，横坐标
+walltime:						默认覆盖时间
+'''
+# 直方图
+.add_histogram(tag, values, global_step=None, bins='tensorflow', walltime=None, max_bins=None)
+# 图片，需要pillow包
+.add_image(tag, img_tensor, global_step=None, walltime=None, dataformats='CHW')
+.add_images(tag, img_tensor, global_step=None, walltime=None, dataformats='NCHW')
+# 绘图
+.add_figure(tag, figure, global_step=None, close=True, walltime=None)
+'''
+figure: (matplotlib.pyplot.figure) – Figure or a list of figures
+'''
+# 字符串
+.add_text(tag, text_string, global_step=None, walltime=None)
+# 模型,
+.add_graph(model, input_to_model=None, verbose=False)
+# 特征表示
+.add_embedding(mat, metadata=None, label_img=None, global_step=None, tag='default', metadata_header=None)
+'''
+mat: 矩阵，每一行为一个数据点的特征
+metadata: 标签列表
+label_img: 每个数据点对应的图
+tag: embedding的名称
+'''
+# 刷新和关闭
+.flush()  .close()
+```
 
-- [ ] `.add_histogram`(*tag*, *values*, *global_step=None*, *bins='tensorflow'*, *walltime=None*, *max_bins=None*)
 
-- [ ] `.add_image`(*tag*, *img_tensor*, *global_step=None*, *walltime=None*, *dataformats='CHW'*)
 
-  `.add_images`(*tag*, *img_tensor*, *global_step=None*, *walltime=None*, *dataformats='NCHW'*)
 
-- [ ] `.add_figure`(*tag*, *figure*, *global_step=None*, *close=True*, *walltime=None*)
 
 
 

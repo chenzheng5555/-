@@ -1,6 +1,6 @@
-# 基础
+# [官方文档](https://docs.python.org/zh-cn/3/)
 
-[官方文档](https://docs.python.org/zh-cn/3/)
+# 1. 基础
 
 ## 解析器
 
@@ -38,16 +38,55 @@ model.__name__
 
 **包**：Python 只把含 `__init__.py` 文件的目录当成包。
 
-> 如果包的 `__init__.py` 代码定义了列表 `__all__`，运行 `from package import *` 时，会导入`__all__`里面的内容。
-
-### 模块搜索路径
+- [x] 模块搜索路径
 
 1. 解释器首先查找名为 model 的**内置模块**。
 2. 解释器再从 [`sys.path`](https://docs.python.org/zh-cn/3/library/sys.html#sys.path) 变量中的目录列表里查找 `model.py` 文件。
 
 
 
+# 2. 函数
 
+函数内的第一条语句是字符串时，该字符串就是**文档字符串**。
+
+## 参数
+
+- 函数执行时会引入一个**symbol table**，用于存储函数的局部变量。但是**引用**的搜索顺序为`local、 enclosing functions、global`的symbol table、最后built-in names。
+- 调用函数时会将**实际参数（实参）**加入到被调用函数的局部符号表中，当参数为列表等复杂对象时，**传递的是对象的 *引用* 而不是对象的值**）。
+- 给参数的默认值如果是变量，则值为变量作用域里的值，如果是列表等，则是引用，多次调用会默认变量的修改值。
+
+```python
+def f(l=[])  #如果f对l做了操作，会使l累积之前的操作
+```
+
+- `kwarg=value` 形式的 **关键字参数** ，关键字参数必须跟在位置参数后面。
+- `*name` 形参接收一个 元组，该**元组包含形参列表之外的位置参数**；形参为 `**name` 形式时，接收一个字典；
+- 可以使用 **`/` 和 `*`** 来显示地确定参数是按何种方式（[仅]位置、[仅]关键字）传递。
+
+```python
+def f(*name,**key_value)
+def f(pos1, pos2, /, pos_or_kwd, *, kwd1, kwd2):
+```
+
++ 用 `*` 操作符**把实参从列表或元组解包**出来，可以用 `**` 操作符可以解**字典**关键字参数。
+
+```python
+print(*[1,2,3])
+def f(key1,key2)
+f(**{"key1": "value1", "key2": "value2"})
+```
+
+
+
+## 函数注解
+
+函数注解 是可选的用户自定义函数类型的元数据**完整信息**。字典的形式存放在函数的 `__annotations__` 属性中；
+
+- 形参标注：形参名后加冒号，跟一个表达式。返回值标注：加符号 `->`，跟一个表达式
+
+```python
+def f(ham: str, eggs: str = 'eggs') -> str:
+```
 
 ## 内置函数
 
@@ -62,9 +101,106 @@ model.__name__
 
 
 
+# 3. 类class
+
+
+
+
+
+
+
+
+
 # 包
 
-## scipy.sparse
+## 1. numpy
+
+[中文文档](https://www.numpy.org.cn/reference/)
+
+### 创建数组
+
+| 创建数组                                                     | 描述                                                        |
+| ------------------------------------------------------------ | ----------------------------------------------------------- |
+| [array](https://numpy.org/devdocs/reference/generated/numpy.array.html#numpy.array)(object[, dtype, copy, order, subok, ndmin]) | 创建一个数组。                                              |
+| [eye](https://numpy.org/devdocs/reference/generated/numpy.eye.html#numpy.eye)(N[, M, k, dtype, order]) | 返回一个二维数组，对角线上1，其他地方为0。                  |
+| [full](https://numpy.org/devdocs/reference/generated/numpy.full.html#numpy.full)(shape, fill_value[, dtype, order]) | 返回给定形状和类型的新数组，并用fill_value填充。ones，zeros |
+| [full_like](https://numpy.org/devdocs/reference/generated/numpy.full_like.html#numpy.full_like)(a, fill_value[, dtype, order, …]) | 返回形状和类型与给定数组相同的完整数组。                    |
+| [arange](https://numpy.org/devdocs/reference/generated/numpy.arange.html#numpy.arange)([start,] stop[, step,][, dtype]) | 返回给定间隔内的均匀间隔的值。                              |
+| [linspace](https://numpy.org/devdocs/reference/generated/numpy.linspace.html#numpy.linspace)(start, stop[, num, endpoint, …]) | 返回指定间隔内的等间隔数字。                                |
+|                                                              |                                                             |
+
+### 属性
+
+| 属性                                                         | 描述             |
+| ------------------------------------------------------------ | ---------------- |
+| [ndarray.T](https://numpy.org/devdocs/reference/generated/numpy.ndarray.T.html#numpy.ndarray.T) | 转置数组。       |
+| [ndarray.shape](https://numpy.org/devdocs/reference/generated/numpy.ndarray.shape.html#numpy.ndarray.shape) | 数组维度的元组。 |
+| [ndarray.ndim](https://numpy.org/devdocs/reference/generated/numpy.ndarray.ndim.html#numpy.ndarray.ndim) | 数组维数。       |
+| [ndarray.size](https://numpy.org/devdocs/reference/generated/numpy.ndarray.size.html#numpy.ndarray.size) | 数组中的元素数。 |
+
+### 拼接数组
+
+| 方法                                                         | 描述                                   |
+| ------------------------------------------------------------ | -------------------------------------- |
+| [concatenate](https://numpy.org/devdocs/reference/generated/numpy.concatenate.html#numpy.concatenate)((a1, a2, …) | 沿现有轴连接一系列数组。               |
+| [stack](https://numpy.org/devdocs/reference/generated/numpy.stack.html#numpy.stack)(arrays[, axis, out]) | 沿新轴连接一系列数组。                 |
+| [column_stack](https://numpy.org/devdocs/reference/generated/numpy.column_stack.html#numpy.column_stack)(tup) | 将一维数组作为列堆叠到二维数组中。     |
+| [dstack](https://numpy.org/devdocs/reference/generated/numpy.dstack.html#numpy.dstack)(tup) | 沿深度方向（沿第三轴）按顺序堆叠数组。 |
+| [hstack](https://numpy.org/devdocs/reference/generated/numpy.hstack.html#numpy.hstack)(tup) | 水平（按列）顺序堆叠数组。             |
+| [vstack](https://numpy.org/devdocs/reference/generated/numpy.vstack.html#numpy.vstack)(tup) | 垂直（行）按顺序堆叠数组。             |
+| [block](https://numpy.org/devdocs/reference/generated/numpy.block.html#numpy.block)(arrays) | 从块的嵌套列表中组装一个nd数组。       |
+
+### 切分数组
+
+| 方法                                                         | 描述                                     |
+| ------------------------------------------------------------ | ---------------------------------------- |
+| [split](https://numpy.org/devdocs/reference/generated/numpy.split.html#numpy.split)(ary, indices_or_sections[, axis]) | 将数组拆分为多个子数组，作为ary的视图。  |
+| [array_split](https://numpy.org/devdocs/reference/generated/numpy.array_split.html#numpy.array_split)(ary, indices_or_sections[, axis]) | 将一个数组拆分为多个子数组。             |
+| [dsplit](https://numpy.org/devdocs/reference/generated/numpy.dsplit.html#numpy.dsplit)(ary, indices_or_sections) | 沿第3轴（深度）将数组拆分为多个子数组。  |
+| [hsplit](https://numpy.org/devdocs/reference/generated/numpy.hsplit.html#numpy.hsplit)(ary, indices_or_sections) | 水平（按列）将一个数组拆分为多个子数组。 |
+| [vsplit](https://numpy.org/devdocs/reference/generated/numpy.vsplit.html#numpy.vsplit)(ary, indices_or_sections) | 垂直（行）将数组拆分为多个子数组。       |
+
+### 增删
+
+| 方法                                                         | 描述                                             |
+| ------------------------------------------------------------ | ------------------------------------------------ |
+| [delete](https://numpy.org/devdocs/reference/generated/numpy.delete.html#numpy.delete)(arr, obj[, axis]) | 返回一个新的数组，该数组具有沿删除的轴的子数组。 |
+| [insert](https://numpy.org/devdocs/reference/generated/numpy.insert.html#numpy.insert)(arr, obj, values[, axis]) | 沿给定轴在给定索引之前插入值。                   |
+| [append](https://numpy.org/devdocs/reference/generated/numpy.append.html#numpy.append)(arr, values[, axis]) | 将值附加到数组的末尾。                           |
+| [resize](https://numpy.org/devdocs/reference/generated/numpy.resize.html#numpy.resize)(a, new_shape) | 返回具有指定形状的新数组。                       |
+| [trim_zeros](https://numpy.org/devdocs/reference/generated/numpy.trim_zeros.html#numpy.trim_zeros)s(filt[, trim]) | 修剪一维数组或序列中的前导和/或尾随零。          |
+| [unique](https://numpy.org/devdocs/reference/generated/numpy.unique.html#numpy.unique)(ar[, return_index, return_inverse, …]) | 查找数组的唯一元素。                             |
+
+### 改变形状
+
+| 方法                                                         | 描述                                   |
+| ------------------------------------------------------------ | -------------------------------------- |
+| [reshape](https://numpy.org/devdocs/reference/generated/numpy.reshape.html#numpy.reshape)(a, newshape[, order]) | 在不更改数据的情况下为数组赋予新的形状 |
+| [ravel](https://numpy.org/devdocs/reference/generated/numpy.ravel.html#numpy.ravel)(a[, order]) | 返回一个连续的扁平数组                 |
+| [ndarray.flatten](https://numpy.org/devdocs/reference/generated/numpy.ndarray.flatten.html#numpy.ndarray.flatten)([order]) | 返回折叠成一维的数组副本               |
+| [squeeze](https://numpy.org/devdocs/reference/generated/numpy.squeeze.html#numpy.squeeze)(a[, axis]) | 从数组形状中删除一维条目               |
+| [expand_dims](https://numpy.org/devdocs/reference/generated/numpy.expand_dims.html#numpy.expand_dims)(a, axis) | 扩展数组的形状。                       |
+| [swapaxes](https://numpy.org/devdocs/reference/generated/numpy.swapaxes.html#numpy.swapaxes)(a, axis1, axis2) | 互换数组的两个轴。                     |
+| [transpose](https://numpy.org/devdocs/reference/generated/numpy.transpose.html#numpy.transpose)(a[, axes]) | 排列数组的尺寸                         |
+| [repeat](https://numpy.org/devdocs/reference/generated/numpy.repeat.html#numpy.repeat)(a, repeats[, axis]) | 重复数组的元素                         |
+
+### 索引切片
+
+一般的切片都支持，data[index_list]
+
+| 方法                                                         | 描述                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [choose](https://numpy.org/devdocs/reference/generated/numpy.choose.html#numpy.choose)(a, choices[, out, mode]) | 从索引数组和一组数组中构造一个数组以供选择。                 |
+| [take](https://numpy.org/devdocs/reference/generated/numpy.take.html#numpy.take)(a, indices[, axis, out, mode]) | 沿轴从数组中获取元素。                                       |
+| [compress](https://numpy.org/devdocs/reference/generated/numpy.compress.html#numpy.compress)(condition, a[, axis, out]) | 沿给定轴返回数组的[选定](https://numpy.org/devdocs/reference/generated/numpy.select.html#numpy.select)切片。 |
+
+### 广播
+
+整个NumPy使用广播来决定如何处理不同形状的数组。
+
+
+
+## 2. scipy.sparse
 
 [参考文档](https://docs.scipy.org/doc/scipy/reference/sparse.html)
 
