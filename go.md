@@ -25,9 +25,17 @@ go install 			#编译，再将.exe添加到GOPATH/bin
 
 ## 2. 快速入门
 
-方法名称为非大写字母开头的，即为私有方法。
+**控制命令可见性**：首字母大小写表示可见性，大写为public，小写为private
+
+**make和new**：new申请内存，返回的指针，make返回的是数据本身，只能用于`slice,map,chan`
+
+对于需要make的数据，如果只声明，则为nil，其他数据默认为空
+
+**匿名**，临时定义，直接作为变量使用
 
 ### 变量
+
+判断类型：`_,ok:=x.(T)`
 
 ```go
 var a int			//变量定义，默认0
@@ -39,23 +47,42 @@ var b,c int = 2,3	//定义多变量
 //数组
 var a [2][3]int		//2*3的二维数组
 
-//切片，可扩展的数组，切片是数组的抽象，切片包含三个组件：容量，长度和指向底层数组的指针，
-var b []int 		//切片
-num := make([]int,5,10)		//切片长度为5，容量为10.
-append(num,1,2,3)	//末尾添加元素
-num[2:]				//子切片
-
-//字典
-m := make(map[string]int)	//key=string，value=int的字典
-m["one"] = 1	//添加键值对
-
 //类型转换
 a := int(b)
 
 //指针
 var ap *int		//整形指针
+var ap new(int)
 ap=&a			//取地址
 fmt.Println(*ap)//取值
+```
+
+### 切片
+
+分为三部分：长度、容量、低层数组。
+
+切片指向一个低层数组，同一数组的不同切分，相当于对该数组一个**引用**。
+
+容量为**当前第一个元素**到**底层数组的最后一个元素**的距离。
+
+使用`...`可以拆分切片`append(a,b...)`
+
+```go
+var a []int 	//a==nil 只声明了变量
+b := []int{}	//b!=nil
+c := [...]int{1,2,3}	//数组
+//切片，可扩展的数组，切片是数组的抽象，切片包含三个组件：容量，长度和指向底层数组的指针，
+num := make([]int,5,10)		//切片长度为5，容量为10.
+append(num,1,2,3)	//末尾添加元素
+num[2:]				//子切片
+```
+
+### 字典
+
+```go
+//字典,必须make
+m := make(map[string]int)	//key=string，value=int的字典
+m["one"] = 1	//添加键值对
 ```
 
 ### 控制流程
@@ -78,6 +105,8 @@ for{	//无限循环
 
 ### 函数
 
+参数默认为值，如果需要修改，则用指针参数
+
 ```go
 //函数
 func add(a int,b int) (int,string) { //函数,多返回值
@@ -93,16 +122,33 @@ func add(b ...int) int {
     //b是一个切片
 }
 //函数作为参数
-func add(g func() int){
+func add(g func() int) func(){
     g()
+    f:=func(){
+        //匿名函数
+    }
+    return f
 }
+//闭包,函数使用函数外的函数的变量
+func call(f func(int,int),x,y int) func(){
+    tmp:=func(){
+        f(x,y)
+    }
+    return tmp
+}
+tmp := call(gg,5,10)	//提前传参 传给的是gg函数
+tmp()					//无参函数
 ```
 
 
 
 ### 结构体
 
+**可以使用has a实现继承**。
+
 ```go
+type myint int	//自定义类型
+type int2 = int //类型别名
 //结构体
 type person struct{
     name string 
@@ -110,44 +156,76 @@ type person struct{
 p := person{name:"tom"} //创建实例
 p.name					//访问
 
-//方法，一个特殊类型的带有返回值的函数。
-func (p *person) describe(){ //func 返回参数 方法名(参数) {}
+//方法，一个特殊类型可以使用的函数。 指针接收者，如果是值，则如果内部有修改，该变量不会变化
+func (p *person) describe(){ //func 接送者 方法名(参数) {}
     fmt.Printf("hello %v",p.name)
 }
 p.describle()	//调用方法
+```
 
-//接口,是一系列方法的集合
+go结构体和json的结合，
+
+```go
+//序列化
+bytes,err:=json.Marshal(person) //序列化
+json.Unmarshal([]byte(str),&person)
+```
+
+
+
+### 接口
+
+多态的实现。分为类型和值两部分。
+
+```go
+//接口,是一系列方法的集合 
 type animal interface{	//定义接口
     description() string
 }
+//cat的实现
 type cat struct{ 		
     name string
 }
 func (c cat) description() string{ //具体实现
     fmt.Printf("name:%v",c.name)
 }
-var a animal
-a=cat{name:"tom"}
-a.description()
+//dot实现
+....
+func de(x animal){
+    x.description()
+}
+var a cat
+var d dog
+de(a)
+de(d)
 ```
 
-### 包
+空接口：`type any interface{}`
 
-包名和文件夹名一样
+### 包
 
 ```go
 go get <url> 	//获取包
 go install 		//安装包
 godoc person Description //生成文档
 godoc -http=":8080"		 //查看文档
+init()  		//函数,在全局函数后自动执行，无法调用，
 ```
 
 ### 异常
 
 ```go
 //由返回值判断。
-panic //未经处理的异常
-defer //在函数结束时执行,如关闭文件，延迟操作
+panic 	//发生异常
+defer 	//在函数结束时执行,如关闭文件，延迟操作
+recover //尝试恢复
+func deal(){
+    defer func(){
+        err:=recover()
+        //处理异常，尝试恢复后面的程序
+    }
+    panic("wrong!!!")//程序终止
+}
 ```
 
 ### 并发
@@ -170,11 +248,7 @@ select{			//多通道
 ch:=make(chan string,2)	//缓冲通道 2 在缓冲区满之前接受方不会收到任何消息。
 ```
 
-
-
-
-
-# 输入输出
+### 格式化输出
 
 格式化输出fmt.Printf
 
@@ -186,3 +260,12 @@ ch:=make(chan string,2)	//缓冲通道 2 在缓冲区满之前接受方不会收
 |       %t，%c，%6s       |            bool值、字符、字符串            |
 
 Sprintf()：格式化输出到字符串。
+
+
+
+
+
+
+
+
+

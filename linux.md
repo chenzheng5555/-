@@ -37,6 +37,7 @@ vim 键盘图[(来源菜鸟教程)](https://www.runoob.com/linux/linux-vim.html)
 > + 粘贴：<kbd>p</kbd>后，<kbd>P</kbd>前
 > + 撤销：<kbd>u</kbd>
 > + 格式化：<kbd>=</kbd>，缩进：<kbd><</kbd>，<kbd>></kbd>。
+> + 光标停留在函数上，按<kbd>Shift</kbd>+<kbd>k</kbd>查看函数man手册
 
 ## 命令模式 
 
@@ -144,6 +145,10 @@ arr=(val1...)
 x=arr[n]		# 取数组数组
 @ 当前所有
 
+#循环控制
+for f in *
+do 
+done
 ```
 
 
@@ -189,10 +194,57 @@ watch			# 检测内存 检测input的第5个元素，watch input[5]
 disassemble		  # 反汇编当前函数或者指定的函数,生成汇编代码
 ```
 
-### 2. 程序执行过程
+### 2. 汇编
+
++ 汇编代码
+
+```assembly
+.section .data	#.xxx 助记符， section表示为一个段 .data表示data段，可读可写
+.section .text	#代码段
+.globl _start	#.globl告诉汇编器 _start链接时会用到，要在目标文件的符号表中给它特殊标记
+_start: 		#_start代表一个符号，即一个地址，程序启动位置
+
+movl $1, %eax 	# 指令
+...
+```
+
++ 汇编生成可执行文件
 
 ```shell
-objdump -dS a.out  		`把C代码和汇编代码穿插起来显示
+as hello.s -o hello.o   #汇编器 翻译为机器指令
+ld hello.o -o hello		#连接器 将多个目标链接为一个可执行文件，将目标文件中的相对地址符 改为加载时的内存地址
+```
+
++ linux可执行文件采用**ELF**格式，有三种不同的类型，目标文件、可执行文件、共享库。
+  + ELF header：体系架构、操作系统等信息，后两部分在文件中的位置。
+  + section header table：所有section部分的信息。汇编和链接时。
+  + program header table：所有segment部分的信息，加载时。segment是指在程序**运行时加载到内存的具有相同属性的区**
+    **域**，由一个或多个Section组成。
+
+```shell
+readelf file.o		# 读取elf文件信息
+hexdump -C file.xx 	# 以二进制查看文件
+objdump	-d file.o	# 反汇编
+```
+
+```shell
+.data			`数据段，以后原封不动的加载到内存
+.bss			`全局变量
+.shstrtab		`保存着各Section的名字， 
+.strtab			`保存着程序中用到的符号的名字。
+.rel.text 		`告诉链接器 指令中的哪些地方需要重定位  
+.symtab			`是符号表，每个符号所对应的编号
+.text			`代码段
+```
+
+在目标文件中，符号地址都是**相对于该符号所在Section的相对地址**  。
+
+因为MMU的权限保护机制是以页为单位的，  不同权限的段需要加载到不同的页
+
+### 3. 程序执行过程
+
+```shell
+objdump -dS a.out  		`把C代码和汇编代码穿插起来显示 编译时需要加-g
 ```
 
 #### 函数启动
@@ -202,6 +254,7 @@ objdump -dS a.out  		`把C代码和汇编代码穿插起来显示
 ```shell
 as hello.s -o hello.o	`将汇编文件 汇编成 目标文件，
 ld hello.o -o hello		`使用链接器链接成 可执行文件，即使是单个目标文件也需要链接
+ld --verboase 	#查看链接器的信息
 ```
 
 每个**汇编程序都要提供一个_start符号并且用.globl声明**，作为整个程序的入口地址，
@@ -234,11 +287,20 @@ ld /usr/lib/crt1.o /usr/lib/crti.o main.o -o main -lc -dynamiclinker /lib/ld-lin
 > 4. 在被调用函数的汇编代码中，前一段是：压入ebp的值（esp减4），然后将esp的值给ebp，即当前函数栈的栈底，在当前函数中时，不会变化，所以**函数的参数（减）和局部变量（加）都是通过ebp的值加上一个偏移量来访问的**。
 > 5. 函数返回时：把ebp值给esp（回到栈底），将保存的 调用函数的ebp值给ebp寄存器（调用函数的ebp），将保存的下一条指令地址，给eip。
 
+#### 变量
 
+结构体的成员在储存时，会有对齐操作。
 
-### 3. 汇编
+```shell
+`.rodata段和.text段通常合并到一个Segment中 ，它们都为只读数据
+`.data和.bss在加载时合并到一个Segment中，  可读可写
+`volatile限制优化。
+`extern 声明外部变量。
+`static 声明本地
+`变量使用必须声明，为了不在每个使用文件中都声明一次，可使用头文件。
+```
 
-#### C内联汇编
+### 4. C内联汇编
 
 平台独有的指令不会出现在c里面，所以gcc提供了一种扩展语法，可以在C代码中使用内联汇编（Inline Assembly）
 
@@ -268,13 +330,47 @@ int main()
 }
 ```
 
+### 5. 库
+
+库文件名都是以lib开头的，静态库以.a作为后缀，  
+
+```shell
+# 静态库
+ar rs libxxxx.a xx1.o xx2.o ...  # 将目标文件打包成静态库 s表示为静态库创建索引，便于链接时使用
+# 使用
+gcc main.c -L. -lxxxx -Ixxxx -o main 	#-L 查找路径 -l链接到的库 -I头文件查找路径
+`链接器可以从静态库中只取出需要的部分来做链接。
+# 动态库 ，
+gcc -c -fPIC xx1.c xx2.c ....  #PIC表示生成位置无关代码的目标文件
+`绝对地址保存在一个地址表中，而指令通过地址表做间接寻址，因此避免了将绝对地址写死在指令中，这也是一种避免硬编码的策略。  
+#生成动态库
+gcc -shared -o libxxx.so xx1.o xx2.o ...
+ldd main  		`ldd命令查看可执行文件依赖于哪些共享库
+`运行时，动态库查找路径顺序：LD_LIBRARY_PATH、/etc/ld.so.cache、/usr/lib、/lib
+```
+
+### 6. IO
+
+每个进程在Linux内核中都有一个`task_struct`结构体来维护进程相关的信息，称为进程控制块  ， `task_struct`中有一个指针指向`files_struct`结构体，称为**文件描述符表**，其中每个表项包含一个指向已打开的文件的指针，  
+
+由open返回的文件描述符一定是**该进程尚未使用的最小描述符**。  
+
+有缓冲的IO：C标准I/O库函数 ，printf  、scanf，读写位置记录在用户空间IO缓冲区中的位置。
+
+无缓冲的IO：open、 read、 write、 close  。读写位置记录在内核，
+
+```shell
+`fgetc() 可能一次读取了1024个字节到IO缓冲区，所以内核中读写位置为1024，FILE中的为1
+#从终端设备读，通常以行为单位，读到换行符就返回了。
+#读常规文件是不会阻塞的，不管读多少字节， read一定会在有限的时间内返回。从终端设备或网络读则不一定，如果从终端输入的数据没有换行符，调用read读终端设备就会阻塞，
+# 如果在open一个设备时指定了O_NONBLOCK标志， read/write就不会阻塞。
+#ioctl用于向设备发控制和配置命令。
+#mmap可以把磁盘文件的一部分直接映射到内存，这样文件中的位置直接就有对应的内存地址，对文件的读写可以直接用指针来做而不需要read/write函数。
+```
 
 
-### 4.链接
 
-
-
-### 5.MakeFile
+## MakeFile
 
 管理和组织代码工程的编译和链接。[参考文章](https://seisman.github.io/how-to-write-makefile/overview.html)
 

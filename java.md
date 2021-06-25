@@ -99,3 +99,41 @@ JavaBean
 动态绑定：根据变量的动态类型决定。
 
 子类会覆盖父类里相同的函数，
+
+
+
+
+
+# 注解
+
+@注解名(参数)
+
+**元注解**负责注解其他注解，Retention什么时候有效 Document，javadoc包
+
+```java
+@Target(value=ElementType.METHOD) //元注解,作用到方法上
+@interface MyAnnotation{ //自动继承java.lang.annotation.Annotation接口
+    name default ""
+}
+```
+
+## 反射
+
+### 反射机制
+
+允许程序在执行期间通过reflection api取得任何类的内部信息。并直接操作。
+
+对于每个类，JRE都会为其保留一个Class类型的对象。
+
+```shell
+`过程
+` JVM在加载类时，
+```
+
+
+
+```java
+Class c=Class.forName("java.long.Class");
+Class c=Person.class;
+```
+

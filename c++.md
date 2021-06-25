@@ -179,10 +179,14 @@ class A{
 
 ## 运算符重载
 
+仿函数，函数对象，
+
 ```c++
 if(a<b) //优先级：成员函数的重载运算符>全局重载函数
 //call A class <
 if(less<pair<int,int>>()(x,y))//调用库内置的重载函数。
+auto f=less<int>();
+f(3,4);
 if(x<y) //调用当前文件写的全局重载函数
 //call pair<int,int> globle <
 ```
@@ -279,6 +283,15 @@ public:
 protected:
     _Container c{};
 };
+```
+
+### queue
+
+```c++
+//使用decltype 将lambda 和 proority_queue结合
+auto cmp = [](int left, int right) { return (left ^ 1) < (right ^ 1); };
+std::priority_queue<int, std::vector<int>, decltype(cmp)> q3(cmp);
+//如果返回true，第一个参数come before第二个参数，
 ```
 
 
