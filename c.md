@@ -129,6 +129,7 @@ pp2 = &p1; // allowed, but const qualifier disregarded
 ```
 
 + 指针也可以指向函数。`type (* func)(argument)`。
++ `restrict`修改符：所有修改该指针所指向内存中内容的操作都必须通过该指针来修改,
 
 ### 6. 字符串
 
@@ -310,4 +311,13 @@ DLLAPI int add(int a,int b);
 
 
 
+
+# 知识点
+
+```c
+#define EV_CHECK_FMT(a,b) __attribute__((format(printf, a, b)))
+void event_err(int eval, const char *fmt, ...) EV_CHECK_FMT(2,3);
+/* 表示以printf的格式检查函数event_err调用与声明是否匹配，2表示格式化的参数位置 fmt， 3表示要匹配的参数位置 ...
+ */
+```
 
