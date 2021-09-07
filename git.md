@@ -140,11 +140,9 @@ git mergetool
 
 ```shell
 <<<<<<< HEAD:index.html  #head所指的当前分支所作的修改
-<div id="footer">contact : email.support@github.com</div>
+# 当前分支修改内容
 ======= #分割符
-<div id="footer">
- please contact us at support@github.com
-</div>
+# iss53修改内容
 >>>>>>> iss53:index.html #iss53分支所做的修改。
 ```
 
