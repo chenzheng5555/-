@@ -339,6 +339,8 @@ int dup2(int oldfd, int newfd);
 int fcntl(int fd, int cmd, ... /* arg */ );
 /* 修改文件符的权限，在文件已经打开的情况下 F_GETFD 获取文件状态 F_SETFD
  */
+int flags = fcntl(fd, F_GETFL, 0);
+fcntl(fd, F_SETFL, flags | O_NONBLOCK);			//设置非阻塞文件描述符
 ```
 
 # 8. 内存模型
@@ -1094,9 +1096,21 @@ while(1){
 
 ## 多路IO复用
 
+一次监听多个文件描述符/套接字等。避免用户对所有连接进行轮询查询，轮询交给内核，减少用户态和内核态的频繁切换。
+
+内部实现时，被监听的IO为非阻塞的，以便内核能够轮询所有被监听的IO。
+
 ### select
 
-初始只有一个socktfd，连接事件是**读事件**。
+`readfds`、`writefds`、`errorfds` 是三个文件**描述符集合**。`select` 会遍历每个集合的前 `nfds` 个描述符，分别找到可以读取、可以写入、发生错误的描述符，统称为“就绪”的描述符。然后用找到的子集替换参数中的对应集合，返回所有就绪描述符的总数。
+
+**fd_set 文件描述符集合**，由于文件描述符 `fd` 是一个从 0 开始的无符号整数，所以可以使用 `fd_set` 的**二进制每一位**来表示一个文件描述符。所以能够监听的个数受到限制。一般为1024。
+
+缺点：
+
+1. 性能，拷贝集合、用户内核态转换，内核遍历nfds个描述符。nfds为监听描述符中最大的描述符。
+2. 数量限制。
+3. 只支持水平触发。
 
 ```c
 int select(int nfds, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, struct timeval *timeout);
@@ -1119,6 +1133,7 @@ FD_ZERO(&allset);
 FD_SET(listenfd, &allset);
 ...
 while(1){
+    rset = allset;																	//保存之前的监听集合
     num = select(maxfd+1, &rset, NULL, NULL, NULL);									//阻塞，等待事件
     if(num<0)exit(1);
     if (FD_ISSET(listenfd, &rset)){
@@ -1136,6 +1151,8 @@ while(1){
 ```
 
 ### poll
+
+poll 和 select 几乎没有区别。poll 在用户态通过**数组**方式**传递**文件描述符，在内核会转为**链表**方式**存储**，**没有最大数量的限制** 。有事件则修改描述符的revents，
 
 ```c
 int poll(struct pollfd *fds, nfds_t nfds, int timeout);
@@ -1158,7 +1175,9 @@ while(1){
     nready = poll(client, maxi+1, -1);		//监听的前几个描述符
     if (client[0].revents & POLLIN) {		//有新连接
         connfd = Accept(listenfd, (struct sockaddr *)&cliaddr, &clilen);
+        
         client[x].fd = connfd;				//未占用数组位置，放入新的连接描述符client[x].fd < 0
+        client[x].events = POLLIN;
     }  
     for (i = 1; i <= maxi; i++) {
         if ((sockfd = client[i].fd) < 0)	//无事件
@@ -1170,6 +1189,23 @@ while(1){
 ```
 
 ### epoll
+
+特点：
+
+- 使用**红黑树**存储文件描述符集合
+- 使用**队列**存储就绪的文件描述符
+- 每个文件描述符只需在添加时传入一次；通过事件更改文件描述符状态
+
+`epoll` 实例内部存储：
+
+- 监听列表：所有要监听的文件描述符，使用红黑树
+- 就绪列表：所有就绪的文件描述符，使用链表
+
+`epoll_create`：创建句柄，会占用一个文件描述符，结束时，需要关闭该文件描述符。
+
+`epoll_ctl`：将需要监听的描述符fd加到epfd中去。并为其关联一个回调函数event。
+
+`epoll_wait`：阻塞等待事件发生。
 
 ```c
 int epoll_create(int size); 
@@ -1207,7 +1243,7 @@ int epoll_wait(int epfd, struct epoll_event *events, int maxevents, int timeout)
 /******************例子*********************************/
 fd = epoll_create(OPEN_MAX);
 tep.events = EPOLLIN; tep.data.fd = listenfd;
-res = epoll_ctl(efd, EPOLL_CTL_ADD, listenfd, &tep);
+res = epoll_ctl(efd, EPOLL_CTL_ADD, listenfd, &tep);	
 for ( ; ; ) {
     nready = epoll_wait(efd, ep, OPEN_MAX, -1);
     for (i = 0; i < nready; i++) {												//监听描述符
@@ -1226,6 +1262,12 @@ for ( ; ; ) {
 **边沿触发**ET：即使未处理完，阻塞等待下一次事件，所以会遗留越来越多的数据在缓冲区。
 
 + 可以重复读取数据，再调用，则可达到`LT`的功能
+
+**边沿触发为什么不能使用阻塞io**：
+
++ 多路复用返回的描述符一定不会阻塞（已经检测到事件发生），如果到达的数据量大于缓冲区，比如`read(fd, buf, sizeof(buf)))` 里的buf为1024B，到达的数据为64KB，则一次read后读取1KB数据，由于数据未取完，1）水平触发再次触发系统调用select，继续read，所以read和select都调用了64次。2）边沿触发，则epool会等待下一次接受数据。可能导致缓冲区数据会越堆越多。
++ 为了减少系统调用，应该将描述符设为非阻塞，通过循环的方式读取完所有数据（返回EWOULDBLOCK），这样select系统调用1次，read调用65次。
++ 注意：通过轮询的方式读取完数据，一定不能使用阻塞，否则程序将在read处阻塞。等待新数据，或则自己提前跳出循环。
 
 ### 反应堆模型
 
