@@ -61,6 +61,14 @@ void func(int a,...)//省略符形参`...`。
 [x,&y](){y=x;cout<<x<<y;}//x传值，y传引用
 ```
 
+## 重载与重写
+
++ 重载：**函数名相同，函数的参数列表不同**。
+
+- [ ] 操作符重载：不能重载的操作符：`::`、`.`、`.*`、`?:`。
+
++ 重写：类的继承中，子类重写父类的虚函数，函数名和参数列表一样。
+
 # 修饰符
 
 ## const
@@ -238,7 +246,17 @@ template <class T> const T &mymin(const T &a, const T &b) {
 
 **重定向**，可以利用文件fstream类读入文件数据，然后使用`fstream>>i`读取数据。或者使用freopen("in","r",stdin)重定向标准输入流
 
-# 容器
+
+
+# STL
+
+相比于OOP面向对象编程，GP泛化编程：分离数据的存储（**容器**）和在数据上的操作（**算法**），通过**迭代器**进行沟通。
+
+
+
+## 容器
+
+
 
 ```c++
 class container{
@@ -250,6 +268,29 @@ public:
     using container_type  = _Container;
 }
 ```
+
+## 分配器allocator
+
+除了申请所需要的内存容量，malloc还会添加一些head，和用于对齐的内存。这样在释放内存时，不需要知道释放的大小。
+
++ new调用malloc，再调用构造函数。
+
++ delete最后调用free，delete在free之前调用析构函数，所以`delete`、 `delete[]`不同。
+
+```c++
+template<class _Ty>
+class allocator{
+publlic:
+    pointer allocate(size_type _N, const void *);	//申请_N的内存，底层malloc
+    void deallocate(void _FARQ *_P, size_type);		//从首地址_P释放size_type的内存。底层free
+}
+```
+
+<img src="img/image-20210921160434282.png" alt="image-20210921160434282" style="zoom:50%;" />
+
+
+
+## 迭代器
 
 
 
@@ -307,9 +348,7 @@ template <class _Kty, class _Ty, class _Pr = less<_Kty>, class _Alloc = allocato
 class map : public _Tree<_Tmap_traits<_Kty, _Ty, _Pr, _Alloc, false>> {...};
 ```
 
-## 分配器
 
-operator new最后调用malloc ；除了申请的大小，添加了一些head。
 
 
 

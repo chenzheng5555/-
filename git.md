@@ -2,6 +2,8 @@
 
 ## 配置
 
+作用范围：
+
 1. `gitconfig`文件——对应`--system`：
 
 1. `.gitconfig`文件——对应`--global`：`core.editor、user.name、user.email`
@@ -46,7 +48,15 @@ doc/**/*.pdf
 ```shell
 git config --global --unset http.proxy      #取消代理，
 git config --global http.sslVerify "false"  #取消ssl验证
+git config --global http.proxy http://127.0.0.1:10809     #设置代理
 git config --global credential.helper store #保存密码
+```
+
++ 目前github增加了安全验证，不再使用密码登录。需要使用`Personal access tokens`。
+
+```shell
+# 添加Personal access tokens 2020-9-21
+git remote set-url origin https://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@github.com/chenzheng5555/note.git
 ```
 
 
@@ -130,7 +140,7 @@ git mergetool
 
 ![image-20210321191906161](img/image-20210321191906161.png)
 
-可以将各分支是为流水线，这样更好理解。
+可以将各分支视为流水线，这样更好理解。
 
 ![趋于稳定分支的工作流（“silo”）视图。](img/lr-branches-2.png)
 
