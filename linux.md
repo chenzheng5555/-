@@ -444,8 +444,7 @@ ld hello.o -o hello		#连接器 将多个目标链接为一个可执行文件，
 + linux可执行文件采用**ELF**格式，有三种不同的类型，目标文件、可执行文件、共享库。
   + ELF header：体系架构、操作系统等信息，后两部分在文件中的位置。
   + section header table：所有section部分的信息。汇编和链接时。
-  + program header table：所有segment部分的信息，加载时。segment是指在程序**运行时加载到内存的具有相同属性的区**
-    **域**，由一个或多个Section组成。
+  + program header table：所有segment部分的信息，加载时。segment是指在程序**运行时加载到内存的具有相同属性的区域**，由一个或多个Section组成。
 
 ```shell
 readelf file.o		# 读取elf文件信息

@@ -39,6 +39,41 @@
 
 + 自定义类型，struct和class。
 
+## 左值与右值
+
++ 左值：**占用了一定内存**，且拥有可辨认的地址的对象。可取地址，赋值。
++ 右值：左值以外的所有对象。**不能取地址**，赋值。比如立即数。
++ 左值引用：对左值的引用。加const可引用右值。可以绑定**临时常量**。
++ 右值引用：对右值的引用；**对象移动、完美转发**。**能够绑定到临时变量**。
+  + 对象移动：目的是减少对象拷贝，为了能够调到移动构造函数，std::move。
+  + 完美转发：
+
+```c++
+const int &r = 5;		//5是右值，r是左值引用，临时左值的引用。
+*(v + 1) = 2;			//指针解引用可以把右值转化为左值
+A a = A();				//临时右值对象，赋值给a,
+Foo (Foo && other);		//移动构造函数，创建对右值的引用，调用结束后，右值引用销毁。
+A&& a_ref4 = A();  		// Ok 右值引用，绑定临时对象。
+```
+
+
+
+## 柔性数组
+
+长度为0的数组，用在结构体中，放在最后，不占用内存，可以动态地确定最后需要的数组长度，
+
+```c++
+struct buf{
+    int length;
+    char arr[0];
+}
+struct buf* p=(struct buf *)malloc(sizeof(buf)+LENGTH);
+p->length=LENGTH;
+free(p);				//只需释放一次，如果是指针，则需要释放两次。
+```
+
+
+
 # 操作符
 
 
@@ -235,6 +270,33 @@ template <class T> const T &mymin(const T &a, const T &b) {
 
 
 # 智能指针
+
+**内存泄漏**指由于疏忽或错误造成程序**未能释放已经不再使用的内存**。
+
+**智能指针离开作用域，释放所指向的内容**。
+
++ **unique_ptr** ：通过**指针占有并管理另一对象**，并在 **`unique_ptr` 离开作用域时释放该对象**。
+  + 智能指针用关联的删除器释放对象时机：1）智能指针销毁，2）发生了赋值。
+  + `unique_ptr` 亦可以不占有对象，该情况下称它为*空 (empty)*。
+
+```c++
+template<class T,class Deleter = std::default_delete<T> > class unique_ptr;
+std::unique_ptr<std::FILE, void (*)(std::FILE*) > fp(std::fopen("demo.txt", "r"), close_file); 	//设定删除器
+std::unique_ptr<D, std::function<void(D*)>> p(new D, [](D* ptr){								//设定lambda删除器
+	std::cout << "destroying from a custom deleter...\n";
+    delete ptr;
+});  // p 占有 D
+```
+
++ **shared_ptr**：通过指针**保持对象共享所有权的智能指针**。多个 shared_ptr 对象可占有同一对象。下列情况之一出现时销毁对象并解分配其内存：
+  + 最后剩下的占有对象的 shared_ptr 被销毁；
+  + 最后剩下的占有对象的 shared_ptr 被通过 operator= 或 reset() 赋值为另一指针。
+
+
+
+
+
+
 
 # 输入输出IO
 
