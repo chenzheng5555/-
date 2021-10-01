@@ -218,10 +218,63 @@ class A{
 ## 继承
 
 + 防止继承的发生，在类名后面加`final`关键字。
++ 构造时：先调用父类的构造函数，再调用子类的构造函数。
++ 析构时：先调用子类的析构函数，在调用父类的析构函数。
++ 子类会继承所有父类的函数，成员变量等，**如果子类重载了父类的函数，则发生了覆盖(name hiding)，父类的函数同名的函数不存在，只存在子类重载的函数**。
 
-## 多态
+```c++
+class A{
+    public:
+    A(){cout<<"A"<<endl;}
+    ~A(){cout<<"~A"<<endl;}
+    void f1(){cout<<"A f1()"<<endl;}
+};
+class B:public A{
+    public:
+    B(){cout<<"B"<<endl;}
+    ~B(){cout<<"~B"<<endl;}
+    void f1(int x){cout<<"B f1()"<<endl;}	//A里的f1()函数name hiding,
+};
+B b; 		//输出：A,B====~B,~A;
+b.f1()		//error，没有匹配函数
+```
 
-+ 虚函数`virtual`。
+```c++
+class A{};
+class B:public A{};
+class C:public A{};
+class D:public B,public C{};
+```
+
+### 多态
+
++ 虚函数`virtual`。当类里有一个函数加了该关键字，该类就多一个**虚函数表指针**，指向需函数表。**虚函数表里的函数只包括虚函数**。
++ 如果虚函数函数体改为`=0`;则为**纯虚函数，类变为抽象类，抽象类无法实例化**，子类必须重写所有父类纯虚函数，才能实例化对象。
++ 虚函数表存放：
+
+```c++
+class A{
+    public:
+    //virtual void f0()=0;  					//纯虚函数
+    virtual void f1(){cout<<"A:f1()"<<endl;}	//虚函数
+    virtual ~A(){cout<<"~A"<<endl;}
+};
+class B:public A{
+    public:
+    virtual void f1(){cout<<"A:f1()"<<endl;}	//虚函数,关键字virtual可不加
+    virtual ~B(){cout<<"~B"<<endl;}
+};
+
+typedef void (*VFPTR)();
+void print(VFPTR* p){							//遍历虚函数表
+    for(int i=0;p[i]!=nullptr;i++){
+        printf("========%p========\n",p[i]);
+        p[i]();
+    }
+}
+```
+
+菱形继承
 
 ## 运算符重载
 
