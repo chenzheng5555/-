@@ -1,6 +1,9 @@
 # 基础
 
 + 语句statement，分号semicolon、函数function（函数名、函数体、必须包含main）、花括号curly brace，类型type（数据和操作），编译compiling和执行executing，声明declare
+
+股份公司的
+
 + 标准I/O库`iostream`：定义了四种对象，输入流：`cin`，输出流：`cout，cerr，clog`。系统会关联四种对象和出现运行的窗口。
 + 指令`#include`和头文件必须出现在同一单行、函数外；
 + 输出操作符`<<`；输入：左边操作数-输出流对象；右边操作数-需打印的值。返回左边操作数（输出流）。
